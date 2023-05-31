@@ -71,48 +71,85 @@
               <!-- Progess Bar? -->
               <!-- Input concept section for grooming-->
               <section class="grooming">
-                <form class="Coat-input">
-                  <select class="coat-type" aria-label="Coat Type">
-                    <option selected>Select coat type</option>
-                    <option value="1">Curly</option>
-                    <option value="2">Silky</option>
-                    <option value="3">Coarse</option>
-                  </select>
-                  <select class="coat-length" aria-label="Coat Length">
-                    <option selected>Select hair length</option>
-                    <option value="1">Short</option>
-                    <option value="2">Medium</option>
-                    <option value="3">Long</option>
-                  </select>
-                  <select class="hair-type" aria-label="Hair Type">
-                    <option selected>Select Hair type</option>
-                    <option value="1">Thin</option>
-                    <option value="2">Thick</option>
-                    <option value="3">Coarse</option>
-                  </select>
+                <section class="skin-type-chk">
+                  <h6>Skin Type</h6>
                   <div class="form-check">
                     <input
-                      class="check-input"
+                      class="form-check-input"
                       type="checkbox"
                       value=""
                       id="flexCheckDefault"
                     />
                     <label class="form-check-label" for="flexCheckDefault">
-                      Shedding
+                      Oily
                     </label>
                   </div>
                   <div class="form-check">
                     <input
-                      class="check-input"
+                      class="form-check-input"
                       type="checkbox"
                       value=""
-                      id="flexCheckDefault"
+                      id="flexCheckChecked"
                       checked
                     />
                     <label class="form-check-label" for="flexCheckChecked">
-                      Non shedding
+                      Dry
                     </label>
                   </div>
+                  <div class="form-check">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      value=""
+                      id="flexCheckChecked"
+                      checked
+                    />
+                    <label class="form-check-label" for="flexCheckChecked">
+                      Sensative
+                    </label>
+                  </div>
+                </section>
+                <form class="Coat-input">
+                  <select class="coat-type" aria-label="Coat Type">
+                    <option selected>Select coat type</option>
+                    <option value="1">Smooth/Short</option>
+                    <option value="2"><Double/Combination></option>
+                    <option value="3">Silky/Nat.Long</option>
+                    <option value="4">Curly/Wavy</option>
+                  </select>
+                  <select class="coat-length" aria-label="Coat Length">
+                    <option selected>Select hair length</option>
+                    <option value="1">Smooth/Short under 1/2"</option>
+                    <option value="2">Medium</option>
+                    <option value="3">Long 2"+</option>
+                  </select>
+                  <!-- check boxes-->
+
+                  <section>
+                    <div class="form-check">
+                      <input
+                        class="check-input"
+                        type="checkbox"
+                        value=""
+                        id="flexCheckDefault"
+                      />
+                      <label class="form-check-label" for="flexCheckDefault">
+                        Shedding
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input
+                        class="check-input"
+                        type="checkbox"
+                        value=""
+                        id="flexCheckDefault"
+                        checked
+                      />
+                      <label class="form-check-label" for="flexCheckChecked">
+                        Non shedding
+                      </label>
+                    </div>
+                  </section>
                 </form>
               </section>
               <!-- end Grooming section-->
