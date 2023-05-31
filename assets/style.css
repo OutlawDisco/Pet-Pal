@@ -1,0 +1,9 @@
+:root{
+    --green: #306306;
+
+}
+
+.custom-time-box h3{
+    font-size: 150%;
+    color: var(--green);
+}
