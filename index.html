@@ -10,12 +10,6 @@
       integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
       crossorigin="anonymous"
     />
-    <!-- <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
-      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-      crossorigin="anonymous"
-    /> -->
     <script
       src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
       integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
@@ -32,113 +26,26 @@
       crossorigin="anonymous"
     ></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-    <link rel="stylesheet" src="./assets/style.css" />
-    <title>Pet Pal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lilita+One&family=Urbanist:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet"><link rel="stylesheet" href="./assets/style.css" />
+    <title>PetPal</title>
   </head>
   <body>
-    <div class="container py-3">
-      <div class="row">
-        <div class="col-12 text-center">
-          <h1>PetPal</h1>
+    <div class="container-fluid p-5 rounded custom-app-container">
+      <header> 
+      <div class="row"> 
+        <div class="col-12 d-flex flex-column align-items-center custom-pet-header ">
+          <h1><span class="text-white">Pet</span>Pal</h1>
+            <img id="pet-img" class="rounded-circle border p-3" src="user-pet-image" alt="Pet Image" />
+              <h5 class="text-center p-3">Pet Name</h5>
         </div>
-      </div>
-
-      <div class="row my-4">
-        <div class="col-12">
-          <div class="card mx-auto">
-            <img class="card-img" src="user-pet-image" alt="Pet Image" />
-            <div class="card-body">
-              <h5 class="card-title text-center">Pet Name</h5>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- <div class="row">
-        <div class="col-12 col-md-6">
-          <div class="card">
-            <div class="card-body text-center">
-              <h5 class="card-title">Food</h5>
-              
-            </div>
-          </div>
-        </div>
-        <div class="col-12 col-md-6">
-          <div class="card">
-            <div class="card-body text-center">
-              <h5 class="card-title">Walks</h5>
-              
-            </div>
-          </div>
-        </div>
-        <div class="col-12 col-md-6">
-          <div class="card">
-            <div class="card-body text-center">
-              <h5 class="card-title">Grooming</h5>
-              
-              
-              <section class="grooming">
-                <form class="Coat-input">
-                  <select class="coat-type" aria-label="Coat Type">
-                    <option selected>Select coat type</option>
-                    <option value="1">Curly</option>
-                    <option value="2">Silky</option>
-                    <option value="3">Coarse</option>
-                  </select>
-                  <select class="coat-length" aria-label="Coat Length">
-                    <option selected>Select hair length</option>
-                    <option value="1">Short</option>
-                    <option value="2">Medium</option>
-                    <option value="3">Long</option>
-                  </select>
-                  <select class="hair-type" aria-label="Hair Type">
-                    <option selected>Select Hair type</option>
-                    <option value="1">Thin</option>
-                    <option value="2">Thick</option>
-                    <option value="3">Coarse</option>
-                  </select>
-                  <div class="form-check">
-                    <input
-                      class="check-input"
-                      type="checkbox"
-                      value=""
-                      id="flexCheckDefault"
-                    />
-                    <label class="form-check-label" for="flexCheckDefault">
-                      Shedding
-                    </label>
-                  </div>
-                  <div class="form-check">
-                    <input
-                      class="check-input"
-                      type="checkbox"
-                      value=""
-                      id="flexCheckDefault"
-                      checked
-                    />
-                    <label class="form-check-label" for="flexCheckChecked">
-                      Non shedding
-                    </label>
-                  </div>
-                </form>
-              </section>
-              
-            </div>
-          </div>
-        </div>
-        <div class="col-12 col-md-6">
-          <div class="card">
-            <div class="card-body text-center">
-              <h5 class="card-title">Misc</h5>
-              
-            </div>
-          </div>
-        </div>
-      </div>  -->
+      </header>
 
       <div class="accordion" id="accordion-options">
         <div class="accordion-item">
           <button
-            class="accordion-button collapsed w-100 d-flex justify-content-end position-relative"
+            class="accordion-button collapsed w-100 d-flex position-relative custom-tab"
             type="button"
             data-bs-toggle="collapse"
             data-bs-target="#collapseOne"
@@ -146,13 +53,13 @@
             aria-controls="collapseOne"
           >
             <h2 class="accordion-header p-3" id="headingOne">FOOD</h2>
-            <div
+           <!-- <div
               id="food-timer"
               class="custom-time-box w-20 position-absolute right mx-5"
             >
               <p class="mb-0">feed pet in</p>
               <h3>0:00</h3>
-            </div>
+            </div> -->  
           </button>
 
           <div
@@ -161,34 +68,45 @@
             aria-labelledby="headingOne"
             data-bs-parent="#accordion-options"
           >
-            <div class="accordion-body">
-              <p>
-                It has been <span class="bolder"> 24 </span> days since you last
+            <div class="accordion-body custom-tab-body">
+              <div class="custom-pantry-box w-100 d-flex flex-column rounded p-2">
+                <h5> Pantry </h5>
+                <p class="pt-2"> You have <span class="fw-bold text-success"> 40 </span> cups of dry food remaining </p>
+                <p class="pt-2"> You have <span class="fw-bold text-danger"> 0 </span> cups of wet food remaining </p>
+                <p class="pt-2"> You have <span class="fw-bold text-success"> 10 </span> treats remaining </p>
+                <a href="#"> Pet food vendors near you </a>
+
+               
+              </div>
+             <!-- <p>
+                It has been <span class="custom-span fw-bold"> 24 </span> days since you last
                 bought food for your animal.
               </p>
               <p>You need to buy more food in <span> 6 </span> days.</p>
-              <a href="#"> Pet food vendors near you </a>
+               --> 
             </div>
           </div>
         </div>
 
         <div class="accordion-item">
           <button
-            class="accordion-button collapsed w-100 d-flex justify-content-end position-relative"
+}
+            class="accordion-button collapsed w-100 d-flex justify-content-end position-relative custom-tab"
             type="button"
             data-bs-toggle="collapse"
             data-bs-target="#collapseTwo"
             aria-expanded="false"
             aria-controls="collapseTwo"
           >
-            <h2 class="accordion-header p-3" id="headingTwo">RECREATION</h2>
-            <div
+            <h2 class="accordion-header p-3" id="headingTwo">ACTIVITY</h2>
+            <!-- <div
               id="walk-timer"
               class="custom-time-box w-20 position-absolute right mx-5"
             >
               <p class="mb-0">last walk</p>
               <h3>0:00</h3>
-            </div>
+            </div> -->
+            
           </button>
 
           <div
@@ -197,7 +115,7 @@
             aria-labelledby="headingTwo"
             data-bs-parent="#accordion-options"
           >
-            <div class="accordion-body">
+            <div class="accordion-body custom-tab-body">
               <a href="#"> Explore walks nearby </a>
             </div>
           </div>
@@ -205,7 +123,7 @@
 
         <div class="accordion-item">
           <button
-            class="accordion-button collapsed w-100 d-flex justify-content-end position-relative"
+            class="accordion-button collapsed w-100 d-flex justify-content-end position-relative custom-tab"
             type="button"
             data-bs-toggle="collapse"
             data-bs-target="#collapseThree"
@@ -213,22 +131,21 @@
             aria-controls="collapseThree"
           >
             <h2 class="accordion-header p-3" id="headingThree">GROOMING</h2>
-            <div
+           <!-- <div
               id="walk-timer"
               class="custom-time-box w-20 position-absolute right mx-5"
             >
               <p class="mb-0">last grooming</p>
               <h3>0</h3>
-            </div>
+            </div> --> 
           </button>
-
           <div
             id="collapseThree"
             class="accordion-collapse collapse"
             aria-labelledby="headingThree"
             data-bs-parent="#accordion-options"
           >
-            <div class="accordion-body">
+            <div class="accordion-body custom-tab-body">
               <section class="grooming">
                 <form class="Coat-input">
                   <select class="coat-type" aria-label="Coat Type">
@@ -279,33 +196,25 @@
         </div>
 
         <div class="accordion-item">
-          <h2 class="accordion-header" id="headingFour">
-            <button
-              class="accordion-button collapsed"
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#collapseFour"
-              aria-expanded="false"
-              aria-controls="collapseFour"
-            >
-              MEDICAL
-            </button>
-          </h2>
+          <button
+            class="accordion-button collapsed w-100 d-flex justify-content-end position-relative custom-tab"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#collapseFour"
+            aria-expanded="false"
+            aria-controls="collapseFour"
+          >
+            <h2 class="accordion-header p-3" id="headingFour">RESOURCES</h2>
+          </button>
+
           <div
             id="collapseFour"
             class="accordion-collapse collapse"
             aria-labelledby="headingFour"
-            data-bs-parent="#accordionExample"
+            data-bs-parent="#accordion-options"
           >
-            <div class="accordion-body">
-              <strong>This is the third item's accordion body.</strong> It is
-              hidden by default, until the collapse plugin adds the appropriate
-              classes that we use to style each element. These classes control
-              the overall appearance, as well as the showing and hiding via CSS
-              transitions. You can modify any of this with custom CSS or
-              overriding our default variables. It's also worth noting that just
-              about any HTML can go within the <code>.accordion-body</code>,
-              though the transition does limit overflow.
+            <div class="accordion-body custom-tab-body">
+              <a href="#"> Explore resources </a>
             </div>
           </div>
         </div>
@@ -339,7 +248,7 @@
       </div>
       <div class="row my-4">
         <div class="col-sm-12">
-          <h1>Dog Breed Search</h1>
+          <h4>Dog Breed Search</h4>
           <form id="dog-form">
             <input type="text" id="breed-input" placeholder="Enter breed" />
             <button type="submit">Search</button>

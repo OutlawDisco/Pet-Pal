@@ -1,9 +1,107 @@
 :root{
-    --green: #306306;
-
+    --deep-orange: #fd6c29;
+    --soft-orange: #ff915e;
+    --opaque-black: rgba(0, 0, 0, 0.5);
 }
 
-.custom-time-box h3{
+
+.custom-app-container{
+    background-color: var(--deep-orange);
+}
+
+
+body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+header{
+    background-color: var(--deep-orange);
+}
+
+h1{
+    font-family: 'Lilita One', sans-serif;
+    font-size: 48pt;
+}
+
+h2{
+    font-family: 'Urbanist', sans-serif;
+    font-weight: 600;
+    color: white;
+    font-size: 200%;
+}
+
+h4{
+    font-family: 'Urbanist', sans-serif;
+    font-weight: 600;  
+    font-size: 200%;
+}
+
+h5{
+    font-family: 'Urbanist', sans-serif;
     font-size: 150%;
-    color: var(--green);
 }
+
+a{
+    text-decoration: none;
+    color: black;
+    font-family: 'Urbanist', sans-serif;
+    font-size: 16pt;
+    font-weight: 400;
+}
+
+a:hover{
+    color: var(--deep-orange);
+    font-weight: 600;
+}
+
+#pet-img{
+    width: 100px;
+    height: 100px;
+}
+
+.custom-tab{
+    background-color: var(--deep-orange);
+}
+
+.custom-tab:focus{
+    color: white;
+    background-color: var(--soft-orange);
+    border: 0;
+    outline: 0;
+    box-shadow: 0 0 0 0;
+}
+
+.custom-tab:focus h2{
+    font-size: 225%;
+    font-weight: 800;
+    color: black;
+}
+
+.custom-tab-body{
+    background-color: var(--soft-orange);
+}
+
+.custom-tab-body p{
+    font-family: 'Urbanist', sans-serif;
+    font-weight: lighter;
+}
+
+.custom-pantry-box{
+    background-color: rgb(253, 235, 211);
+    border: solid 1px rgb(228, 183, 128);
+}
+
+.custom-pantry-box p{
+    color:black;
+    font-size: 16pt;
+    border-top: solid 1px rgb(228, 183, 128);
+}
+
+.custom-pantry-box a{
+    color:black;
+    font-size: 16pt;
+    border-top: solid 1px rgb(228, 183, 128);
+}
+
