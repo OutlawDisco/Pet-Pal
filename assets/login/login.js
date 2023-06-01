@@ -10,6 +10,11 @@ $(function(){
     const KEY = "PapXiuiFyPoqSiDufQ";
     const SEP = "314159";
 
+    if(pullFromLocal() === null){
+        $('#openLogin').addClass('d-none');
+    }
+
+
     // Changes the password into a more secure key to store
     function convertToKey(password){
         var converted = "";
@@ -103,27 +108,24 @@ $(function(){
             var email = $('#email').val();
             var password = $('#passwordIn').val();
 
-            if(type === 'login' && (pullFromLocal() !== null)){ // makes sure there is information in local storage
+            if(type === 'login'){ // makes sure there is information in local storage
                 if(checkPassword(password) && pullFromLocal().name === email){
                     loggedIn = true;
-                    console.log(loggedIn);
+                    modalAlert("Logged in", "Successfully logged in. \n Redirecting you to home page.");
                     return;
                 }else{
                     modalAlert("Incorrect Info", "Incorrect email or password. Please try again.");
                 }
             }else if(type === 'signup'){
-                console.log("poopy");
                 var passwordCheck = $('#passwordConfirm').val();
                 if(password === passwordCheck){
                     saveToLocal(email, password);
                     loggedIn = true;
-                    console.log(loggedIn);
+                    modalAlert("Account created", "Your account has been successfully created. \n Redirecting you to home page.")
                     return;
                 }else{
                     modalAlert("Mismatch", "Passwords don't match. Please make sure you enter them correctly.");
                 }
-            }else{
-                modalAlert("No account", "No accounts found. Please use the sign up page to create an account.");
             }
         });
     }
