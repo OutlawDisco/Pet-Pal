@@ -55,8 +55,8 @@ $(function () {
       },
     });
   }
-  function getDogData() {
-    var url = `https://api.thedogapi.com/v1/breeds`;
+  function getDogData(breed) {
+    var url = `https://api.thedogapi.com/v1/breeds/search?q=${breed}`;
 
     $.ajax({
       url: url,
@@ -64,6 +64,13 @@ $(function () {
       dataType: "json",
       success: function (data) {
         console.log(data);
+        if (data.length > 0) {
+          console.log(`Breed: ${data[0].name}`);
+          console.log(`Temperament: ${data[0].temperament}`);
+          console.log(`Life span: ${data[0].life_span}`);
+        } else {
+          console.log(`No data found for breed: ${breed}`);
+        }
       },
     });
   }
@@ -81,6 +88,6 @@ $(function () {
   $("#dog-form").on("submit", function (event) {
     event.preventDefault();
     var breed = $("#breed-input").val();
-    getDogData();
+    getDogData(breed);
   });
 });
