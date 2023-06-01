@@ -65,15 +65,37 @@ $(function () {
       success: function (data) {
         console.log(data);
         if (data.length > 0) {
-          console.log(`Breed: ${data[0].name}`);
-          console.log(`Temperament: ${data[0].temperament}`);
-          console.log(`Life span: ${data[0].life_span}`);
+          //dynamically update dog card text with searched breed
+          $("#dog-breed").text(`Breed: ${data[0].name}`);
+          $("#dog-temperament").text(`Temperament: ${data[0].temperament}`);
+          $("#dog-life-span").text(`Life span: ${data[0].life_span}`);
         } else {
-          console.log(`No data found for breed: ${breed}`);
+          $("#dog-breed").text(`No data found for breed: ${breed}`);
+          $("#dog-temperament").text("");
+          $("#dog-life-span").text("");
         }
       },
     });
   }
+
+  //autocomplete- create an empty array for fetched dog breeds
+  var breeds = [];
+
+  // fetch all breeds for autocomplete functionality
+  $.ajax({
+    url: "https://api.thedogapi.com/v1/breeds",
+    type: "GET",
+    dataType: "json",
+    success: function (data) {
+      //loop through fetched data and push breed names to the breeds array
+      for (var i = 0; i < data.length; i++) {
+        breeds.push(data[i].name);
+      }
+      $("#breed-input").autocomplete({
+        source: breeds,
+      });
+    },
+  });
   //event listener on city search button
   $("#search-btn").on("click", function () {
     //grab city input value
