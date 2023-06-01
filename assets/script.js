@@ -1,22 +1,20 @@
 $(function () {
-  //enevt listener on search button
-  $("#search-btn").on("click", function () {
-    //grab city input value
-    var city = $("#city-input").val();
-    localStorage.setItem("city", city);
-    //call the weather data function
+  //get the data from the local storage
+  var city = localStorage.getItem("city");
+  if (city) {
+    $("#city-input").val(city);
     getWeatherData(city);
-  });
+  }
+
   //create get weather data function and pass in the city
   function getWeatherData(city) {
-    var apiKey = "c0c121fba052263fed9243172c4438c8";
+    var weatherApiKey = "c0c121fba052263fed9243172c4438c8";
 
     $.ajax({
-      url: `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`,
+      url: `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${weatherApiKey}`,
       type: "GET",
       dataType: "json",
       success: function (data) {
-        console.log(data);
         $("#weather-title").text(`${data.name} - ${data.weather[0].main}`);
         $("#weather-temp").text(
           `Temperature: ${((data.main.temp * 9) / 5 - 459.67).toFixed(2)}°F`
@@ -44,12 +42,45 @@ $(function () {
     });
   }
 
-  $(function () {
-    //get the data from the local storage
-    var city = localStorage.getItem("city");
-    if (city) {
-      $("#city-input").val(city);
-      getWeatherData(city);
-    }
+  //create get national park data function
+  function getNationalParkData() {
+    var parkApiKey = "RDipcBT0gYwC0hhJZAqjkTs1r9urfPxu4MDAPYUz";
+
+    $.ajax({
+      url: `https://developer.nps.gov/api/v1/campgrounds?api_key=${parkApiKey}`,
+      type: "GET",
+      dataType: "json",
+      success: function (data) {
+        console.log(data);
+      },
+    });
+  }
+  function getDogData() {
+    var url = `https://api.thedogapi.com/v1/breeds`;
+
+    $.ajax({
+      url: url,
+      type: "GET",
+      dataType: "json",
+      success: function (data) {
+        console.log(data);
+      },
+    });
+  }
+  //event listener on city search button
+  $("#search-btn").on("click", function () {
+    //grab city input value
+    var city = $("#city-input").val();
+    localStorage.setItem("city", city);
+    //call the weather data function
+    getWeatherData(city);
+    //call national park data function
+    getNationalParkData();
+  });
+  //event listener for dog breed
+  $("#dog-form").on("submit", function (event) {
+    event.preventDefault();
+    var breed = $("#breed-input").val();
+    getDogData();
   });
 });
