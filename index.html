@@ -171,49 +171,7 @@
       <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordion-options">
         <div class="accordion-body">
           <section class="grooming">
-            <form class="Coat-input">
-              <select class="coat-type" aria-label="Coat Type">
-                <option selected>Select coat type</option>
-                <option value="1">Curly</option>
-                <option value="2">Silky</option>
-                <option value="3">Coarse</option>
-              </select>
-              <select class="coat-length" aria-label="Coat Length">
-                <option selected>Select hair length</option>
-                <option value="1">Short</option>
-                <option value="2">Medium</option>
-                <option value="3">Long</option>
-              </select>
-              <select class="hair-type" aria-label="Hair Type">
-                <option selected>Select Hair type</option>
-                <option value="1">Thin</option>
-                <option value="2">Thick</option>
-                <option value="3">Coarse</option>
-              </select>
-              <div class="form-check">
-                <input
-                  class="check-input"
-                  type="checkbox"
-                  value=""
-                  id="flexCheckDefault"
-                />
-                <label class="form-check-label" for="flexCheckDefault">
-                  Shedding
-                </label>
-              </div>
-              <div class="form-check">
-                <input
-                  class="check-input"
-                  type="checkbox"
-                  value=""
-                  id="flexCheckDefault"
-                  checked
-                />
-                <label class="form-check-label" for="flexCheckChecked">
-                  Non shedding
-                </label>
-              </div>
-            </form>
+
           </section>
         </div>
       </div>
@@ -259,7 +217,125 @@
         </div>
       </div>
     </div>
+    
+    <div class="modal-fullscreen-lg-down p-5">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title mb-3">Create Your Pet's Profile</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="my-1">
+              <label for="pet-name-input" class="form-label">Pet Name:</label>
+              <input type="text" class="form-control" id="pet-name-input" placeholder="Your pet's name here">
+            </div>
+          </div>
 
+          <label for="formControlInput2" class="form-label mt-4">Pet Type:</label>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="radiocat" id="radio-cat">
+            <label class="form-check-label" for="radio-cat">
+              Cat
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="radiodog" id="radio-dog">
+            <label class="form-check-label" for="readio-dog">
+              Dog
+            </label>
+          </div>
+          <h3 class="mt-5"> FOOD: </h3>
+          
+          <select class="form-select" id="meals-select" aria-label="Default select example">
+            <option selected> Select the number of meals per day</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6"> More </option>
+          </select>
+          <label for="food-quantity" class="form-label mt-3">Specify the quantity of food per serving</label>
+          <div id="food-quantity" class="input-group input-group-sm mb-3">
+            <span class="input-group-text" id="dry-food-quantity">Dry Food</span>
+            <input type="text" class="form-control" aria-label="dry-food-quantity">
+            <span class="input-group-text"> cups </span>
+            <br>
+            <span class="input-group-text ml-5" id="wet-food-quantity">Wet Food</span>
+            <input type="text" class="form-control" aria-label="wet-food-quantity">
+            <span class="input-group-text"> cups </span>
+          </div>
+
+          <h3 class="mt-5"> ACTIVITY: </h3>
+          <select class="form-select" id="activity-select" aria-label="Daily Activity">
+            <option selected> Select your average number of activities per day</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">More</option>
+          </select>
+
+          <h3 class="mt-5"> GROOMING: </h3>
+          <form class="Coat-input">
+            <select class="coat-type" aria-label="Coat Type">
+              <option selected>Select coat type</option>
+              <option value="1">Curly</option>
+              <option value="2">Silky</option>
+              <option value="3">Coarse</option>
+            </select>
+            <select class="coat-length" aria-label="Coat Length">
+              <option selected>Select hair length</option>
+              <option value="1">Short</option>
+              <option value="2">Medium</option>
+              <option value="3">Long</option>
+            </select>
+            <select class="hair-type" aria-label="Hair Type">
+              <option selected>Select Hair type</option>
+              <option value="1">Thin</option>
+              <option value="2">Thick</option>
+              <option value="3">Coarse</option>
+            </select>
+            <div class="form-check">
+              <input
+                class="check-input"
+                type="checkbox"
+                value=""
+                id="flexCheckDefault"
+              />
+              <label class="form-check-label" for="flexCheckDefault">
+                Shedding
+              </label>
+            </div>
+            <div class="form-check">
+              <input
+                class="check-input"
+                type="checkbox"
+                value=""
+                id="flexCheckDefault"
+                checked
+              />
+              <label class="form-check-label" for="flexCheckChecked">
+                Non shedding
+              </label>
+            </div>
+          </form>
+          
+
+
+          </div>
+
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
     <script src="assets/script.js"></script>
