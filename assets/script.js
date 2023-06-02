@@ -113,3 +113,51 @@ $(function () {
     getDogData(breed);
   });
 });
+
+// The PANTRY
+
+// converts ounces of wet food to cups
+function toWetCups(wetOz) {
+  return wetOz / 6;
+}
+
+//  converts ounces of dry food to cups
+function toDryCups(dryOz) {
+  return dryOz / 3;
+}
+//can ammount is in ounces
+function servingsPerCan(wetCup, canAmount) {
+  return canAmount / (wetCup * 6);
+}
+
+// bag amount per pounds
+function servingPerBag(dryCup, bagAmount) {
+  return (bagAmount * 4) / dryCup;
+}
+
+// TO DO:
+//  Make "cans on hand" option on tab(oz per can, number of cans)
+// Create a Variables for Wet Food Cans in pantry
+
+// Make a "bags on hand" Option on tab (pounds per bag, number of bags)
+// Create Variables for Dry food Bags in pantry
+
+//Create function that tracks servings per can on Wet food then store data
+//Create function that tracks servings per can on Dry food then store data
+
+//create function that subtracts # servings-per-day from Pantry every 24hrs
+
+// Function steps for "servings left" on wet food
+
+// convert can oz # to wet-cups #
+// divide wet-cups # by food-per-serving# = servings total
+// divide servings total by days in the week = servings left
+// display servings left in wet food
+
+// Function steps for "servings left" on dry food
+
+// convert bags on hand to pounds
+// convert pounds to dry-cups
+// divide dry-cups # by food-per-servings# = servings total
+// divide servings total by days in a week = servings left
+// display servings left of dry food
