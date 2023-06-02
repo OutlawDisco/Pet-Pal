@@ -5,6 +5,10 @@ $(function () {
     $("#city-input").val(city);
     getWeatherData(city);
   }
+  $("#dog-breed").text("Search for a dog breed!");
+  $("#dog-temperament").text("");
+  $("#dog-life-span").text("");
+  $("#dog-img").attr("alt", "");
 
   //create get weather data function and pass in the city
   function getWeatherData(city) {
@@ -42,19 +46,6 @@ $(function () {
     });
   }
 
-  //create get national park data function
-  function getNationalParkData() {
-    var parkApiKey = "RDipcBT0gYwC0hhJZAqjkTs1r9urfPxu4MDAPYUz";
-
-    $.ajax({
-      url: `https://developer.nps.gov/api/v1/campgrounds?api_key=${parkApiKey}`,
-      type: "GET",
-      dataType: "json",
-      success: function (data) {
-        console.log(data);
-      },
-    });
-  }
   function getDogData(breed) {
     var url = `https://api.thedogapi.com/v1/breeds/search?q=${breed}`;
 
@@ -69,10 +60,32 @@ $(function () {
           $("#dog-breed").text(`Breed: ${data[0].name}`);
           $("#dog-temperament").text(`Temperament: ${data[0].temperament}`);
           $("#dog-life-span").text(`Life span: ${data[0].life_span}`);
+          // call function to get the dog image
+          var breedId = data[0].id;
+          getDogImage(breedId);
         } else {
           $("#dog-breed").text(`No data found for breed: ${breed}`);
           $("#dog-temperament").text("");
           $("#dog-life-span").text("");
+          $("#dog-img").attr("src", "");
+        }
+      },
+    });
+  }
+  // fetch the dog breed images using the breedid
+  function getDogImage(breedId) {
+    var url = `https://api.thedogapi.com/v1/images/search?breed_ids=${breedId}&size=small&include_breeds=true`;
+
+    $.ajax({
+      url: url,
+      type: "GET",
+      dataType: "json",
+      success: function (data) {
+        console.log(data);
+        if (data.length > 0 && data[0].url) {
+          $("#dog-img").attr("src", data[0].url);
+        } else {
+          $("#dog-img").attr("src", "");
         }
       },
     });
@@ -96,6 +109,7 @@ $(function () {
       });
     },
   });
+
   //event listener on city search button
   $("#search-btn").on("click", function () {
     //grab city input value
@@ -106,6 +120,7 @@ $(function () {
     //call national park data function
     getNationalParkData();
   });
+
   //event listener for dog breed
   $("#dog-form").on("submit", function (event) {
     event.preventDefault();
