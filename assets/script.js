@@ -127,7 +127,7 @@ function toDryCups(dryOz) {
 }
 //can ammount is in ounces
 function servingsPerCan(wetCup, canAmount) {
-  return canAmount / (wetCup * 6);
+  return (canAmount / (wetCup * 6)).toFixed(1);
 }
 
 // bag amount per pounds
