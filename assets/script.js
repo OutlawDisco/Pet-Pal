@@ -147,17 +147,43 @@ function servingPerBag(dryCup, bagAmount) {
 
 //create function that subtracts # servings-per-day from Pantry every 24hrs
 
-// Function steps for "servings left" on wet food
+// # of Cans / servings-wetcup
+var pantry = {
+  wetFood: {
+    qty: 1, //cans
+    oz: 12.2, //oz prer can
+  },
+  dryFood: {
+    qty: 0.5, // bags
+    lbs: 5, //lbsper bag
+  },
+};
 
-// convert can oz # to wet-cups #
-// divide wet-cups # by food-per-serving# = servings total
-// divide servings total by days in the week = servings left
-// display servings left in wet food
+// Function steps for "servings left" on wet food
+function servingsLeftWet(mealPerDay, amountOfFood) {
+  var canOnHand = pantry.wetFood;
+  // convert can oz # to wet-cups #- based off how
+  var SPC = parseFloat(servingsPerCan(amountOfFood, canOnHand.oz));
+  // divide wet-cups # by food-per-serving# = servings total
+  // divide servings total by days in the week = servings left
+  var servingsRemaining = SPC * canOnHand.qty - mealPerDay;
+  console.log(SPC);
+  console.log(servingsRemaining / SPC); //% of the can left
+  // display servings left in wet food
+  return servingsRemaining;
+}
 
 // Function steps for "servings left" on dry food
-
-// convert bags on hand to pounds
-// convert pounds to dry-cups
-// divide dry-cups # by food-per-servings# = servings total
-// divide servings total by days in a week = servings left
-// display servings left of dry food
+function servingsLeftDry(mealsPerDay, amountOfFood) {
+  // convert bags on hand to pounds
+  var bagOnHand = pantry.dryFood;
+  // convert pounds to dry-cups
+  var BOH = parseFloat(servingsPerBag(amountOfFood, bagOnHand.lbs));
+  // divide dry-cups # by food-per-servings# = servings total
+  // divide servings total by days in a week = servings left
+  var servingsRemaining = BOH * bagOnHand.qty - mealsPerDay;
+  console.log(BOH);
+  console.log(servingsRemaining / BOH);
+  // display servings left of dry food
+  return servingsRemaining;
+}
