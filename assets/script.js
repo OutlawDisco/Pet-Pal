@@ -136,35 +136,32 @@ function servingPerBag(dryCup, bagAmount) {
 }
 
 // TO DO:
-//  Make "cans on hand" option on tab(oz per can, number of cans)
-// Create a Variables for Wet Food Cans in pantry
+//  Make "cans on hand" option on tab(oz per can & number of cans)
 
-// Make a "bags on hand" Option on tab (pounds per bag, number of bags)
-// Create Variables for Dry food Bags in pantry
+// Make a "bags on hand" option on tab (pounds per bag & number of bags)
 
-//Create function that tracks servings per can on Wet food then store data
-//Create function that tracks servings per can on Dry food then store data
+//Store servings remaining for servingsLeftWet, and servingsLeftDry in Pantry
 
-//create function that subtracts # servings-per-day from Pantry every 24hrs
+//create function that subtracts # servings-per-day from Pantry (servings left wet/dry) every 24hrs
 
-// # of Cans / servings-wetcup
+// To Do: store user input for #'s
 var pantry = {
   wetFood: {
     qty: 1, //cans
-    oz: 12.2, //oz prer can
+    oz: 12.2, //oz per can
   },
   dryFood: {
     qty: 0.5, // bags
-    lbs: 5, //lbsper bag
+    lbs: 5, //lbs per bag
   },
 };
 
 // Function steps for "servings left" on wet food
 function servingsLeftWet(mealPerDay, amountOfFood) {
+  // convert can oz # to wet-cups #
   var canOnHand = pantry.wetFood;
-  // convert can oz # to wet-cups #- based off how
-  var SPC = parseFloat(servingsPerCan(amountOfFood, canOnHand.oz));
   // divide wet-cups # by food-per-serving# = servings total
+  var SPC = parseFloat(servingsPerCan(amountOfFood, canOnHand.oz));
   // divide servings total by days in the week = servings left
   var servingsRemaining = SPC * canOnHand.qty - mealPerDay;
   console.log(SPC);
