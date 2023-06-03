@@ -35,6 +35,184 @@
     <title>PetPal</title>
   </head>
   <body>
+    <!-- start modal -->
+    <div id="#profile-modal" class="modal-fullscreen-lg-down p-5">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title mb-3">Create Your Pet's Profile</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="my-1">
+              <label for="pet-name-input" class="form-label">Pet Name:</label>
+              <input type="text" class="form-control" id="pet-name-input" placeholder="Your pet's name here">
+            </div>
+          </div>
+          <label for="formControlInput2" class="form-label mt-4">Pet Type:</label>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="radiocat" id="radio-cat">
+            <label class="form-check-label" for="radio-cat">
+              Cat
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="radiodog" id="radio-dog">
+            <label class="form-check-label" for="readio-dog">
+              Dog
+            </label>
+          </div>
+          <section class="food">
+          <h3 class="mt-5"> FOOD: </h3>
+          
+          <select class="form-select mb-3" id="meals-select" aria-label="Default select example">
+            <option selected> Select the number of meals per day</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6"> More </option>
+          </select>
+
+          <div id="dry-food-check" class="form-check mt-5">
+            <h6> Dry Food Information </h6>
+            <input class="form-check-input" type="checkbox" value="" id="dry-food-check-input">
+            <label class="form-check-label" for="flexCheckChecked">
+              Dry Food 
+            </label>
+            <br>
+          </div>
+          <div id="pantry-dry-food">   
+          <label for="dry-meal-portion" class="form-label mt-3">Specify the quantity of dry food per serving</label>
+          <div id="dry-food-meal" class="input-group input-group-sm mb-3">
+              <input type="text" class="form-control" aria-label="dry-meal-portion">
+              <span class="input-group-text"> cups </span>
+            </div>
+          <label for="wet-inventory" class="form-label mt-3">Specify your current inventory of dry food</label>
+          <div id="wet-inventory" class="input-group input-group-sm mb-3">
+              <input type="text" class="form-control" aria-label="dry-inventory-bags">
+              <span class="input-group-text"> bags </span>
+              <input type="text" class="form-control" aria-label="dry-inventory-lbs">
+              <span class="input-group-text"> lbs. per bag </span>
+            </div>
+          </div>
+          
+          
+          <div id="wet-food-check" class="form-check mt-5">
+          <h6> Wet Food Information </h6>
+            <input class="form-check-input" type="checkbox" value="" id="wet-food-check-input">
+            <label class="form-check-label" for="flexCheckChecked">
+              Wet Food 
+            </label>
+            <br>
+          <div id="pantry-wet-food"> 
+          <label for="wet-meal-portion" class="form-label mt-3">Specify the quantity of wet food per serving</label>
+          <div id="wet-food-meal" class="input-group input-group-sm mb-3">
+              <input type="text" class="form-control" aria-label="wet-meal-portion">
+              <span class="input-group-text"> cups </span>
+            </div>
+          <label for="wet-inventory" class="form-label mt-3">Specify your current inventory of wet food</label>
+          <div id="wet-inventory" class="input-group input-group-sm mb-3">
+              <input type="text" class="form-control" aria-label="wet-inventory-cans">
+              <span class="input-group-text"> cans </span>
+              <input type="text" class="form-control" aria-label="wet-inventory-oz">
+              <span class="input-group-text"> oz. per can </span>
+            </div>
+          </div>
+        </section>
+        <section class="grooming">
+            <h3 class="mt-5"> GROOMING: </h3>
+            <section class="skin-type-chk">
+              <h6>Skin Type</h6>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  value=""
+                  id="flexCheckDefault"
+                />
+                <label class="form-check-label" for="flexCheckDefault">
+                  Oily
+                </label>
+              </div>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  value=""
+                  id="flexCheckChecked"
+                  checked
+                />
+                <label class="form-check-label" for="flexCheckChecked">
+                  Dry
+                </label>
+              </div>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  value=""
+                  id="flexCheckChecked"
+                  checked
+                />
+                <label class="form-check-label" for="flexCheckChecked">
+                  Sensative
+                </label>
+              </div>
+            </section>
+            <form class="Coat-input">
+              <select class="coat-type" aria-label="Coat Type">
+                <option selected>Select coat type</option>
+                <option value="1">Smooth/Short</option>
+                <option value="2"><Double/Combination></option>
+                <option value="3">Silky/Nat.Long</option>
+                <option value="4">Curly/Wavy</option>
+              </select>
+              <select class="coat-length" aria-label="Coat Length">
+                <option selected>Select hair length</option>
+                <option value="1">Smooth/Short under 1/2"</option>
+                <option value="2">Medium</option>
+                <option value="3">Long 2"+</option>
+              </select>
+              <!-- check boxes-->
+
+              <section>
+                <div class="form-check">
+                  <input
+                    class="check-input"
+                    type="checkbox"
+                    value=""
+                    id="flexCheckDefault"
+                  />
+                  <label class="form-check-label" for="flexCheckDefault">
+                    Shedding
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input
+                    class="check-input"
+                    type="checkbox"
+                    value=""
+                    id="flexCheckDefault"
+                    checked
+                  />
+                  <label class="form-check-label" for="flexCheckChecked">
+                    Non shedding
+                  </label>
+                </div>
+              </section>
+            </form>
+          </section>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button id="pantry-submit" type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- end modal -->
     <div class="container-fluid p-5 rounded custom-app-container">
       <!-- start header -->
       <header> 
@@ -59,13 +237,6 @@
             aria-controls="collapseOne"
           >
             <h2 class="accordion-header p-3" id="headingOne">FOOD</h2>
-           <!-- <div
-              id="food-timer"
-              class="custom-time-box w-20 position-absolute right mx-5"
-            >
-              <p class="mb-0">feed pet in</p>
-              <h3>0:00</h3>
-            </div> -->  
           </button>
 
           <div
@@ -99,13 +270,6 @@
             aria-controls="collapseTwo"
           >
             <h2 class="accordion-header p-3" id="headingTwo">ACTIVITY</h2>
-            <!-- <div
-              id="walk-timer"
-              class="custom-time-box w-20 position-absolute right mx-5"
-            >
-              <p class="mb-0">last walk</p>
-              <h3>0:00</h3>
-            </div> -->
             
           </button>
 
@@ -207,13 +371,6 @@
             aria-controls="collapseThree"
           >
             <h2 class="accordion-header p-3" id="headingThree">GROOMING</h2>
-           <!-- <div
-              id="walk-timer"
-              class="custom-time-box w-20 position-absolute right mx-5"
-            >
-              <p class="mb-0">last grooming</p>
-              <h3>0</h3>
-            </div> --> 
           </button>
           <div
             id="collapseThree"
@@ -384,126 +541,7 @@
       <!-- end dog search -->
     </div>
     
-    <!-- start modal -->
-    <div class="modal-fullscreen-lg-down p-5">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title mb-3">Create Your Pet's Profile</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <div class="my-1">
-              <label for="pet-name-input" class="form-label">Pet Name:</label>
-              <input type="text" class="form-control" id="pet-name-input" placeholder="Your pet's name here">
-            </div>
-          </div>
-
-          <label for="formControlInput2" class="form-label mt-4">Pet Type:</label>
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="radiocat" id="radio-cat">
-            <label class="form-check-label" for="radio-cat">
-              Cat
-            </label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="radiodog" id="radio-dog">
-            <label class="form-check-label" for="readio-dog">
-              Dog
-            </label>
-          </div>
-          <h3 class="mt-5"> FOOD: </h3>
-          
-          <select class="form-select" id="meals-select" aria-label="Default select example">
-            <option selected> Select the number of meals per day</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6"> More </option>
-          </select>
-          <label for="food-quantity" class="form-label mt-3">Specify the quantity of food per serving</label>
-          <div id="food-quantity" class="input-group input-group-sm mb-3">
-            <span class="input-group-text" id="dry-food-quantity">Dry Food</span>
-            <input type="text" class="form-control" aria-label="dry-food-quantity">
-            <span class="input-group-text"> cups </span>
-            <br>
-            <span class="input-group-text ml-5" id="wet-food-quantity">Wet Food</span>
-            <input type="text" class="form-control" aria-label="wet-food-quantity">
-            <span class="input-group-text"> cups </span>
-          </div>
-
-          <h3 class="mt-5"> ACTIVITY: </h3>
-          <select class="form-select" id="activity-select" aria-label="Daily Activity">
-            <option selected> Select your average number of activities per day</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">More</option>
-          </select>
-
-          <h3 class="mt-5"> GROOMING: </h3>
-          <form class="Coat-input">
-            <select class="coat-type" aria-label="Coat Type">
-              <option selected>Select coat type</option>
-              <option value="1">Curly</option>
-              <option value="2">Silky</option>
-              <option value="3">Coarse</option>
-            </select>
-            <select class="coat-length" aria-label="Coat Length">
-              <option selected>Select hair length</option>
-              <option value="1">Short</option>
-              <option value="2">Medium</option>
-              <option value="3">Long</option>
-            </select>
-            <select class="hair-type" aria-label="Hair Type">
-              <option selected>Select Hair type</option>
-              <option value="1">Thin</option>
-              <option value="2">Thick</option>
-              <option value="3">Coarse</option>
-            </select>
-            <div class="form-check">
-              <input
-                class="check-input"
-                type="checkbox"
-                value=""
-                id="flexCheckDefault"
-              />
-              <label class="form-check-label" for="flexCheckDefault">
-                Shedding
-              </label>
-            </div>
-            <div class="form-check">
-              <input
-                class="check-input"
-                type="checkbox"
-                value=""
-                id="flexCheckDefault"
-                checked
-              />
-              <label class="form-check-label" for="flexCheckChecked">
-                Non shedding
-              </label>
-            </div>
-          </form>
-          
-
-
-          </div>
-
-
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button id="pantry-submit" type="button" class="btn btn-primary">Save changes</button>
-          </div>
-
-        </div>
-      </div>
-    </div>
-    <!-- end modal -->
+    
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
     <script src="assets/script.js"></script>
