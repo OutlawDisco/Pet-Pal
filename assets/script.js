@@ -199,3 +199,28 @@ function servingsLeftDry(mealsPerDay, amountOfFood) {
   // display servings left of dry food
   return servingsRemaining;
 }
+
+var petPalPet = {
+  pet: {
+    name: "",
+    type: "",
+  },
+  pantry: {
+    meals: "",
+    type: "",
+    oz: "",
+    lbs: "",
+    serving: "",
+    date: "",
+  },
+  grooming: {
+    skin: "",
+    coat: "",
+    length: "",
+    shedding: false,
+  },
+};
+var petHistory = JSON.parse(localStorage.getItem("petPalPet")) || petPalPet;
+
+//on save run this.
+localStorage.setItem("petPalPet", JSON.stringify(petHistory));
