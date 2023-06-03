@@ -221,7 +221,14 @@ var petPalPet = {
     shedding: false,
   },
   subtractFood: function (){
-    var currDate = dayjs.format('MM-DD-YY');
+    var currDate = dayjs.format('DD-MM-YY');
+    var dayTracker = parseInt(JSON.parse(JSON.stringify(this.dayMade)).substr(0,2)); // deep copy of dayMade
+    var monthTracker = parseInt(JSON.parse(JSON.stringify(this.dayMade)).substr(3,2)); // deep copy of dayMade
+    var yearTracker = parseInt(JSON.parse(JSON.stringify(this.dayMade)).substr(6,2)); // deep copy of dayMade
+    var dayCounter = 0;
+    for(var i = 0; i < 31; i++){
+      
+    }
   }
 };
 
