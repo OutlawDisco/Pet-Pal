@@ -221,16 +221,21 @@ var petPalPet = {
     shedding: false,
   },
   subtractFood: function (){
-    var currDate = dayjs.format('DD-MM-YY');
-    var dayTracker = parseInt(JSON.parse(JSON.stringify(this.dayMade)).substr(0,2)); // deep copy of dayMade
-    var monthTracker = parseInt(JSON.parse(JSON.stringify(this.dayMade)).substr(3,2)); // deep copy of dayMade
-    var yearTracker = parseInt(JSON.parse(JSON.stringify(this.dayMade)).substr(6,2)); // deep copy of dayMade
-    var dayCounter = 0;
-    for(var i = 0; i < 31; i++){
-      
-    }
+    var currDate = dayjs().format('DDMMYY');
+    var currDay = parseInt(currDate.substr(4,2) * 365);
+    currDay += Math.ceil(parseFloat(currDate.substr(2,2) * 30.5));
+    currDay += parseInt(currDate.substr(0,2));
+    console.log(currDay - this.dayMade);
+  },
+  initializeDay: function (){
+    var currDate = dayjs().format('DDMMYY');
+    var currDay = parseInt(currDate.substr(4,2) * 365);
+    currDay += Math.ceil(parseFloat(currDate.substr(2,2) * 30.5));
+    currDay += parseInt(currDate.substr(0,2));
+    this.dayMade = currDay;
   }
 };
+
 
 // Pulls 'name' from localStorage and returns it
 function pullFromLocal(name){
