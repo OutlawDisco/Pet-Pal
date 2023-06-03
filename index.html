@@ -36,6 +36,7 @@
   </head>
   <body>
     <div class="container-fluid p-5 rounded custom-app-container">
+      <!-- start header -->
       <header> 
       <div class="row"> 
         <div class="col-12 d-flex flex-column align-items-center custom-pet-header ">
@@ -44,7 +45,9 @@
               <h5 class="text-center p-3">Pet Name</h5>
         </div>
       </header>
+      <!-- end header -->
 
+      <!-- accordion for food, activity, grooming, and resources -->
       <div class="accordion" id="accordion-options">
         <div class="accordion-item">
           <button
@@ -87,7 +90,7 @@
 
         <div class="accordion-item">
           <button
-}
+
             class="accordion-button collapsed w-100 d-flex justify-content-end position-relative custom-tab"
             type="button"
             data-bs-toggle="collapse"
@@ -329,6 +332,7 @@
           </div>
         </div>
       </div>
+      <!-- end accordion -->
       
   <!--   <div class="row my-4">
         <div class="col-sm-12">
@@ -357,7 +361,7 @@
         </div>
       </div> -->
     
-      
+      <!-- start dog search -->
       <div class="row my-4">
         <div class="col-sm-12">
           <h4>Dog Breed Search</h4>
@@ -377,8 +381,10 @@
           </div>
         </div>
       </div>
+      <!-- end dog search -->
     </div>
     
+    <!-- start modal -->
     <div class="modal-fullscreen-lg-down p-5">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -491,12 +497,13 @@
 
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
+            <button id="pantry-submit" type="button" class="btn btn-primary">Save changes</button>
           </div>
 
         </div>
       </div>
     </div>
+    <!-- end modal -->
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
     <script src="assets/script.js"></script>
