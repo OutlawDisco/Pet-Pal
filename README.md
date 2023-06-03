@@ -32,6 +32,6 @@ THEN I can see a variety of grooming suggestions for my pet.
 
 WHEN I click on the resources tab at the bottom of the screen
 
-THEN I can fin general information on a variety of dog breeds
+THEN I can find general information on a variety of dog breeds
 
 
