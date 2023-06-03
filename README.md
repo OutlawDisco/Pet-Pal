@@ -18,7 +18,7 @@ WHEN I save my pets food preferences to the Pantry
 
 THEN I can see how many days/meals left my pet has
 
-When I click on the ACtivities tab
+When I click on the Activities tab
 
 THEN I can see the weather forcast as well as links to brain activities for my pet
 
