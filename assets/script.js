@@ -201,6 +201,7 @@ function servingsLeftDry(mealsPerDay, amountOfFood) {
 }
 
 var petPalPet = {
+  dayMade: '',
   pet: {
     name: "",
     type: "",
@@ -219,8 +220,22 @@ var petPalPet = {
     length: "",
     shedding: false,
   },
+  subtractFood: function (){
+    var currDate = dayjs.format('MM-DD-YY');
+  }
 };
-var petHistory = JSON.parse(localStorage.getItem("petPalPet")) || petPalPet;
 
-//on save run this.
-localStorage.setItem("petPalPet", JSON.stringify(petHistory));
+// Pulls 'name' from localStorage and returns it
+function pullFromLocal(name){
+  var stored = JSON.parse(localStorage.getItem(name));
+  if(stored !== null){
+    return stored;
+  }else{
+    return [];
+  }
+}
+
+// Saves 'toPush' in local storage as 'name'
+function pushToLocal(name, toPush){
+  localStorage.setItem(name, JSON.stringify(toPush));
+}
