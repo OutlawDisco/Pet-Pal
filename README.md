@@ -1,19 +1,25 @@
 # Pet-Pal
 
 User Story
+
 AS A pet owner with a busy schedule,
 I WANT a personal assistant to help me remember important tasks for my pet
 SO THAT I can manage their needs effectivley
 
 Acceptance Criteria
+
 GIVEN that I am using a mobile app to track my pets needs
 WHEN I open the app
-THEN I can register me and my pet
-WHEN I save my preferences
-THEN I can see the categories I want to follow clearly displayed on my home page
+THEN I can register my pet
+WHEN I save my pets food preferences to the Pantry
+THEN I can see how many days/meals left my pet has
+When I click on the ACtivities tab
+THEN I can see the weather forcast as well as links to brain activities for my pet
+WHEN I click on the grooming tab
+THEN I can enter my pats skin and coat type
+When I submit my pets preferences 
+THEN I can see a variety of grooming suggestions for my pet.
 WHEN I click on the resources tab at the bottom of the screen
-THEN I can find vetrinary clinics and pet stores near me
-WHEN I click on the grooming button
-THEN I can see when I need to clip their nails or give them a bath
-WHEN I click on the activities button
-THEN I can see how many minutes of play we have to complete for the day/week
+THEN I can fin general information on a variety of dog breeds
+
+
