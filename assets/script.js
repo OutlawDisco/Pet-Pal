@@ -54,7 +54,6 @@ $(function () {
       type: "GET",
       dataType: "json",
       success: function (data) {
-        console.log(data);
         if (data.length > 0) {
           //dynamically update dog card text with searched breed
           $("#dog-breed").text(`Breed: ${data[0].name}`);
@@ -81,7 +80,6 @@ $(function () {
       type: "GET",
       dataType: "json",
       success: function (data) {
-        console.log(data);
         if (data.length > 0 && data[0].url) {
           $("#dog-img").attr("src", data[0].url);
         } else {
@@ -117,8 +115,6 @@ $(function () {
     localStorage.setItem("city", city);
     //call the weather data function
     getWeatherData(city);
-    //call national park data function
-    getNationalParkData();
   });
 
   //event listener for dog breed
@@ -126,6 +122,14 @@ $(function () {
     event.preventDefault();
     var breed = $("#breed-input").val();
     getDogData(breed);
+    // remove spaces and add hypens and make the characters lower case for the url link
+    var urlBreed = breed.replace(/\s+/g, "-").toLowerCase();
+
+    $("#adopt-btn").click(function () {
+      window.location.href = `https://www.petfinder.com/dogs-and-puppies/breeds/${urlBreed}/`;
+    });
+    $(".adopt-section").show();
+    $("#dog-img").show();
   });
 });
 
@@ -201,7 +205,7 @@ function servingsLeftDry(mealsPerDay, amountOfFood) {
 }
 
 var petPalPet = {
-  dayMade: '',
+  dayMade: "",
   pet: {
     name: "",
     type: "",
@@ -220,34 +224,33 @@ var petPalPet = {
     length: "",
     shedding: false,
   },
-  subtractFood: function (){
-    var currDate = dayjs().format('DDMMYY');
-    var currDay = parseInt(currDate.substr(4,2) * 365);
-    currDay += Math.ceil(parseFloat(currDate.substr(2,2) * 30.5));
-    currDay += parseInt(currDate.substr(0,2));
+  subtractFood: function () {
+    var currDate = dayjs().format("DDMMYY");
+    var currDay = parseInt(currDate.substr(4, 2) * 365);
+    currDay += Math.ceil(parseFloat(currDate.substr(2, 2) * 30.5));
+    currDay += parseInt(currDate.substr(0, 2));
     console.log(currDay - this.dayMade);
   },
-  initializeDay: function (){
-    var currDate = dayjs().format('DDMMYY');
-    var currDay = parseInt(currDate.substr(4,2) * 365);
-    currDay += Math.ceil(parseFloat(currDate.substr(2,2) * 30.5));
-    currDay += parseInt(currDate.substr(0,2));
+  initializeDay: function () {
+    var currDate = dayjs().format("DDMMYY");
+    var currDay = parseInt(currDate.substr(4, 2) * 365);
+    currDay += Math.ceil(parseFloat(currDate.substr(2, 2) * 30.5));
+    currDay += parseInt(currDate.substr(0, 2));
     this.dayMade = currDay;
-  }
+  },
 };
 
-
 // Pulls 'name' from localStorage and returns it
-function pullFromLocal(name){
+function pullFromLocal(name) {
   var stored = JSON.parse(localStorage.getItem(name));
-  if(stored !== null){
+  if (stored !== null) {
     return stored;
-  }else{
+  } else {
     return [];
   }
 }
 
 // Saves 'toPush' in local storage as 'name'
-function pushToLocal(name, toPush){
+function pushToLocal(name, toPush) {
   localStorage.setItem(name, JSON.stringify(toPush));
 }
