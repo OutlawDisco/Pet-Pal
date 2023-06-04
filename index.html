@@ -519,23 +519,27 @@
       </div> -->
     
       <!-- start dog search -->
-      <div class="row my-4">
+      <div class="row my-4 align-items-center">
         <div class="col-sm-12">
           <h4>Dog Breed Search</h4>
           <form id="dog-form">
-            <input type="text" id="breed-input" placeholder="Enter breed" />
-            <button type="submit">Search</button>
+            <input type="text" id="breed-input" placeholder="Search A Breed" />
+            <button class="btn btn-dark" type="submit">Search</button>
           </form>
         </div>
-        <div class="col-sm-12">
+        <div class="col-sm-12 col-md-5 text-center">
           <div class="card">
             <div class="card-body">
               <h5 class="card-title" id="dog-breed"></h5>
               <p class="card-text" id="dog-temperament"></p>
               <p id="dog-life-span"></p>
-              <img id="dog-img" alt="Dog Picture" />
+              <img style="max-width: 400px; display: none;" id="dog-img" alt="Dog Picture" />
             </div>
           </div>
+        </div>
+        <div class="col-sm-12 col-md-4 adopt-section text-center" style="display: none;" >
+          <h3>Looking to adopt or learn more about this breed?</h3>
+          <button class="btn btn-dark" id="adopt-btn">Click Here!</button>
         </div>
       </div>
       <!-- end dog search -->
