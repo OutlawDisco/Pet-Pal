@@ -221,20 +221,21 @@ var petPalPet = {
     shedding: false,
   },
   subtractFood: function (){
-    var currDate = dayjs().format('DDMMYY');
-    var currDay = parseInt(currDate.substr(4,2) * 365);
-    currDay += Math.ceil(parseFloat(currDate.substr(2,2) * 30.5));
-    currDay += parseInt(currDate.substr(0,2));
-    console.log(currDay - this.dayMade);
+    var numDaysPassed = daysSince2000(dayjs().format('DDMMYY')) - this.dayMade;
+    // add math to multiply the number of days by the amount of food per day
   },
   initializeDay: function (){
-    var currDate = dayjs().format('DDMMYY');
-    var currDay = parseInt(currDate.substr(4,2) * 365);
-    currDay += Math.ceil(parseFloat(currDate.substr(2,2) * 30.5));
-    currDay += parseInt(currDate.substr(0,2));
-    this.dayMade = currDay;
+    this.dayMade = daysSince2000(dayjs().format('DDMMYY'));
   }
 };
+
+// Converts DDMMYY format into the amount of days since year 2000
+function daysSince2000(day){
+  var dayCounter = parseInt(day.substr(4,2)) * 365;
+  dayCounter += Math.ceil(parseFloat(day.substr(2,2)) * 30.5);
+  dayCounter += parseInt(day.substr(0,2));
+  return dayCounter;
+}
 
 
 // Pulls 'name' from localStorage and returns it
