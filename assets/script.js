@@ -15,31 +15,62 @@ $(function () {
     var weatherApiKey = "c0c121fba052263fed9243172c4438c8";
 
     $.ajax({
-      url: `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${weatherApiKey}`,
+      url: `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${weatherApiKey}`,
       type: "GET",
       dataType: "json",
       success: function (data) {
         $("#weather-title").text(`${data.name} - ${data.weather[0].main}`);
-        $("#weather-temp").text(
-          `Temperature: ${((data.main.temp * 9) / 5 - 459.67).toFixed(2)}°F`
-        );
+        $("#weather-temp").text(`Temperature: ${data.main.temp}°F`);
         $("#weather-date").text();
         $("#weather-icon").attr(
           "src",
           `http://openweathermap.org/img/wn/${data.weather[0].icon}.png`
         );
-        //declare the weather condition
+        //declare the weather condition, temp and dom references for message title and text elements
         var weatherCondition = data.weather[0].main.toLowerCase();
-        // if statment for if its raining, sunny, cloudy, snowing
-        if (weatherCondition === "rain" || weatherCondition === "snow") {
-          $("#dog-day-title").text("Stay In Alert!");
-          $("#dog-day-text").text(
-            "It's raining or snowing. Stay in and cuddle with your dog."
+        var temperature = data.main.temp;
+        var dogDayTitle = $("#dog-day-title");
+        var dogDayText = $("#dog-day-text");
+
+        // if statement for different weather conditions using https://openweathermap.org/weather-conditions
+        if (weatherCondition === "rain") {
+          dogDayTitle.text("Rain Alert!");
+          dogDayText.text("Stay in and cuddle up with your dog!");
+        } else if (weatherCondition === "snow") {
+          dogDayTitle.text("Snow Alert!");
+          dogDayText.text(
+            "Be sure to bundle up if you take your dog for a walk!"
+          );
+        } else if (weatherCondition === "clear") {
+          dogDayTitle.text("Nice Day Alert!");
+          if (temperature > 85) {
+            dogDayText.text(
+              "It's hot! Test the cement with your hand. If you can hold it for 7 seconds, it's pawsitively safe for a walk!"
+            );
+          } else {
+            dogDayText.text("It's a beautiful day! Take your dog for a walk.");
+          }
+        } else if (weatherCondition === "clouds") {
+          dogDayTitle.text("Cloudy Day Alert!");
+          if (temperature > 85) {
+            dogDayText.text(
+              "It's hot! Test the cement with your hand. If you can hold it for 7 seconds, it's pawsitively safe for a walk!"
+            );
+          } else {
+            dogDayText.text("It's a nice day, your dog might enjoy a walk!");
+          }
+        } else if (weatherCondition === "drizzle") {
+          dogDayTitle.text("Drizzle Alert!");
+          dogDayText.text("Don't forget a raincoat for you and your dog!");
+        } else if (weatherCondition === "thunderstorm") {
+          dogDayTitle.text("Thunderstorm Alert!");
+          dogDayText.text(
+            "Stay safe inside and bring out your dogs favorite toy!"
           );
         } else {
-          $("#dog-day-title").text("Nice Day Alert!");
-          $("#dog-day-text").text(
-            "It's a beautiful day! Take your dog for a walk."
+          dogDayTitle.text("Be Cautious!");
+          dogDayText.text(
+            `It looks like ${weatherCondition} is in the air. Be cautious if you're taking your dog on a walk!`
           );
         }
       },
@@ -224,25 +255,25 @@ var petPalPet = {
     length: "",
     shedding: false,
   },
-  subtractFood: function (){
-    var numDaysPassed = daysSince2000(dayjs().format('DDMMYY')) - this.dayMade;
+  subtractFood: function () {
+    var numDaysPassed = daysSince2000(dayjs().format("DDMMYY")) - this.dayMade;
     // add math to multiply the number of days by the amount of food per day
   },
-  initializeDay: function (){
-    this.dayMade = daysSince2000(dayjs().format('DDMMYY'));
-  }
+  initializeDay: function () {
+    this.dayMade = daysSince2000(dayjs().format("DDMMYY"));
+  },
 };
 
 // Converts DDMMYY format into the amount of days since year 2000
 // Leap days arent counted because Im lazy
-function daysSince2000(day){
-  var dayCounter = parseInt(day.substr(4,2)) * 365;
+function daysSince2000(day) {
+  var dayCounter = parseInt(day.substr(4, 2)) * 365;
   var daysInMonth = [31, 28, 31, 30, 31, 30, 31, 30, 31, 30, 31, 30];
-  var month = parseInt(day.substr(2,2));
-  for(var i = 0; i < month; i++){
+  var month = parseInt(day.substr(2, 2));
+  for (var i = 0; i < month; i++) {
     dayCounter += daysInMonth[i];
   }
-  dayCounter += parseInt(day.substr(0,2));
+  dayCounter += parseInt(day.substr(0, 2));
   return dayCounter;
 }
 
