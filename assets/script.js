@@ -203,7 +203,7 @@ var PetPalPet = {
     lbsPerServing: 0,
     bags: 0,
     lbsPerBag: 0,
-    servingsLeft: function () {
+    daysLeft: function () {
       var totalLbs = this.bags * this.lbsPerBag;
       var foodPerDay = this.meals * this.lbsPerServing;
       var servingsLeft = totalLbs / foodPerDay;
@@ -231,7 +231,7 @@ var PetPalPet = {
     ozPerServing: 0,
     cans: 0,
     ozPerCan: 0,
-    servingsLeft: function () {
+    daysLeft: function () {
       var totalOzs = this.cans * this.ozPerCan;
       var foodPerDay = this.meals * this.ozPerServing;
       var servingsLeft = totalOzs / foodPerDay;
