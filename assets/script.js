@@ -265,12 +265,16 @@ var petPalPet = {
 };
 
 // Converts DDMMYY format into the amount of days since year 2000
-// Leap days arent counted because Im lazy
 function daysSince2000(day) {
-  var dayCounter = parseInt(day.substr(4, 2)) * 365;
+  var year = parseInt(day.substr(4,2));
+  var dayCounter = (year - 1) * 365;
+
   var daysInMonth = [31, 28, 31, 30, 31, 30, 31, 30, 31, 30, 31, 30];
+  if(year % 4 === 0){
+    daysInMonth[1] = 29;
+  }
   var month = parseInt(day.substr(2, 2));
-  for (var i = 0; i < month; i++) {
+  for (var i = 0; i < month - 1; i++) {
     dayCounter += daysInMonth[i];
   }
   dayCounter += parseInt(day.substr(0, 2));
