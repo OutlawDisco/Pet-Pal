@@ -37,102 +37,80 @@
   </head>
   <body>
     <!-- start modal -->
-    <div id="#profile-modal" class="modal-fullscreen-lg-down p-5">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title mb-3">Create Your Pet's Profile</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <div class="my-1">
-              <label for="pet-name-input" class="form-label">Pet Name:</label>
-              <input type="text" class="form-control" id="pet-name-input" placeholder="Your pet's name here">
-            </div>
-          </div>
-          <label for="formControlInput2" class="form-label mt-4">Pet Type:</label>
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="radiocat" id="radio-cat">
-            <label class="form-check-label" for="radio-cat">
-              Cat
-            </label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="radiodog" id="radio-dog">
-            <label class="form-check-label" for="readio-dog">
-              Dog
-            </label>
-          </div>
-          <section class="food">
-          <h3 class="mt-5"> FOOD: </h3>
-          
+    <div id="profile-modal" class="modal-fullscreen-lg-down p-5">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title mb-3">Create Your Pet's Profile</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="my-1">
+          <label for="pet-name-input" class="form-label">Pet Name:</label>
+          <input type="text" class="form-control" id="pet-name-input" placeholder="Your pet's name here">
+        </div>
+
+        <section class="food">
+          <h3 class="mt-5">FOOD:</h3>
+
           <select class="form-select mb-3" id="meals-select" aria-label="Default select example">
-            <option selected> Select the number of meals per day</option>
+            <option selected>Select the number of meals per day</option>
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
             <option value="4">4</option>
             <option value="5">5</option>
-            <option value="6"> More </option>
+            <option value="6">More</option>
           </select>
 
           <div id="dry-food-check" class="form-check mt-5">
-            <h6> Dry Food Information </h6>
-            <input class="form-check-input" type="checkbox" value="" id="dry-food-check-input">
-            <label class="form-check-label" for="flexCheckChecked">
-              Dry Food 
-            </label>
+            <h6>Dry Food Information</h6>
             <br>
           </div>
-          <div id="pantry-dry-food">   
-          <label for="dry-meal-portion" class="form-label mt-3">Specify the quantity of dry food per serving</label>
-          <div id="dry-food-meal" class="input-group input-group-sm mb-3">
+          <div id="pantry-dry-food">
+            <label for="dry-meal-portion" class="form-label mt-3">Specify the quantity of dry food per serving</label>
+            <div id="dry-food-meal" class="input-group input-group-sm mb-3">
               <input id="dry-food-meal-input" type="text" class="form-control" aria-label="dry-meal-portion">
-              <span class="input-group-text"> cups </span>
+              <span class="input-group-text">cups</span>
             </div>
-          <label for="dry-inventory" class="form-label mt-3">Specify your current inventory of dry food</label>
-          <div id="dry-inventory" class="input-group input-group-sm mb-3">
+            <label for="dry-inventory" class="form-label mt-3">Specify your current inventory of dry food</label>
+            <div id="dry-inventory" class="input-group input-group-sm mb-3">
               <input type="text" class="form-control" aria-label="dry-inventory-bags">
-              <span class="input-group-text"> bags </span>
+              <span class="input-group-text">bag(s)</span>
               <input type="text" class="form-control" aria-label="dry-inventory-lbs">
-              <span class="input-group-text"> lbs. per bag </span>
+              <span class="input-group-text">lbs. per bag</span>
             </div>
           </div>
-          
-          
+
           <div id="wet-food-check" class="form-check mt-5">
-          <h6> Wet Food Information </h6>
-            <input class="form-check-input" type="checkbox" value="" id="wet-food-check-input">
-            <label class="form-check-label" for="flexCheckChecked">
-              Wet Food 
-            </label>
+            <h6>Wet Food Information</h6>
             <br>
-          <div id="pantry-wet-food"> 
-          <label for="wet-meal-portion" class="form-label mt-3">Specify the quantity of wet food per serving</label>
-          <div id="wet-food-meal" class="input-group input-group-sm mb-3">
-              <input id="wet-food-meal-input" type="text" class="form-control" aria-label="wet-meal-portion">
-              <span class="input-group-text"> cups </span>
-            </div>
-          <label for="wet-inventory" class="form-label mt-3">Specify your current inventory of wet food</label>
-          <div id="wet-inventory" class="input-group input-group-sm mb-3">
-              <input type="text" class="form-control" aria-label="wet-inventory-cans">
-              <span class="input-group-text"> cans </span>
-              <input type="text" class="form-control" aria-label="wet-inventory-oz">
-              <span class="input-group-text"> oz. per can </span>
+            <div id="pantry-wet-food">
+              <label for="wet-meal-portion" class="form-label mt-3">Specify the quantity of wet food per serving</label>
+              <div id="wet-food-meal" class="input-group input-group-sm mb-3">
+                <input id="wet-food-meal-input" type="text" class="form-control" aria-label="wet-meal-portion">
+                <span class="input-group-text">oz.</span>
+              </div>
+              <label for="wet-inventory" class="form-label mt-3">Specify your current inventory of wet food</label>
+              <div id="wet-inventory" class="input-group input-group-sm mb-3">
+                <label for="wet-inventory-cans">Number of Cans On Hand</label>
+                <input type="text" class="form-control" id="wet-inventory-cans" aria-label="wet-inventory-cans">
+                <span class="input-group-text">cans</span>
+                <label for="wet-inventory-oz">Amount of wet food in a can (in oz.)</label>
+                <input type="text" class="form-control" id="wet-inventory-oz" aria-label="wet-inventory-oz">
+                <span class="input-group-text">oz. per can</span>
+              </div>
             </div>
           </div>
         </section>
-        
-            </form>
-          </section>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button id="pantry-submit" type="button" class="btn btn-primary">Save changes</button>
-          </div>
-        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button id="pantry-submit" type="button" class="btn btn-primary">Save changes</button>
       </div>
     </div>
+  </div>
+</div>
     <!-- end modal -->
     <div class="container-fluid p-5 rounded custom-app-container">
       <!-- start header -->
@@ -170,10 +148,9 @@
             <div class="accordion-body custom-tab-body">
               <div class="custom-pantry-box w-100 d-flex flex-column rounded p-2">
                 <h5> Pantry </h5>
-                <p class="pt-2"> You have <span id="dry-food-remaining" class="fw-bold text-success"> 40 </span> cups of dry food remaining </p>
-                <p class="pt-2"> You have <span id="wet-food-remaining" class="fw-bold text-danger"> 0 </span> cups of wet food remaining </p>
+                <p class="pt-2"> You have <span id="dry-food-remaining" class="fw-bold text-success"> 40 </span> days of dry food remaining </p>
+                <p class="pt-2"> You have <span id="wet-food-remaining" class="fw-bold text-danger"> 0 </span> days of wet food remaining </p>
                 <!-- <p class="pt-2"> You have <span class="fw-bold text-success"> 10 </span> treats remaining </p> -->
-                <a href="#"> Pet food vendors near you </a>
 
               
               </div>
