@@ -47,6 +47,10 @@ $(function () {
             dogDayText.text(
               "It's hot! Test the cement with your hand. If you can hold it for 7 seconds, it's pawsitively safe for a walk!"
             );
+          } else if (temperature < 30) {
+            dogDayText.text(
+              "Brrr! Put on a few extra layers for you and your dog !"
+            );
           } else {
             dogDayText.text("It's a beautiful day! Take your dog for a walk.");
           }
@@ -65,7 +69,7 @@ $(function () {
         } else if (weatherCondition === "thunderstorm") {
           dogDayTitle.text("Thunderstorm Alert!");
           dogDayText.text(
-            "Stay safe inside and bring out your dogs favorite toy!"
+            "Sit, Stay-In! Make sure your dog has a calm and quiet space in your home to ride out the storm."
           );
         } else {
           dogDayTitle.text("Be Cautious!");
@@ -185,15 +189,6 @@ function servingPerBag(dryCup, bagAmount) {
   return (bagAmount * 4) / dryCup;
 }
 
-// TO DO:
-//  Make "cans on hand" option on tab(oz per can & number of cans)
-
-// Make a "bags on hand" option on tab (pounds per bag & number of bags)
-
-//Store servings remaining for servingsLeftWet, and servingsLeftDry in Pantry
-
-//create function that subtracts # servings-per-day from Pantry (servings left wet/dry) every 24hrs
-
 var PetPalPet = {
   dayMade: 0,
   pet: {
@@ -254,11 +249,11 @@ var PetPalPet = {
 
 // Converts DDMMYY format into the amount of days since year 2000
 function daysSince2000(day) {
-  var year = parseInt(day.substr(4,2));
+  var year = parseInt(day.substr(4, 2));
   var dayCounter = (year - 1) * 365;
 
   var daysInMonth = [31, 28, 31, 30, 31, 30, 31, 30, 31, 30, 31, 30];
-  if(year % 4 === 0){
+  if (year % 4 === 0) {
     daysInMonth[1] = 29;
   }
   var month = parseInt(day.substr(2, 2));
