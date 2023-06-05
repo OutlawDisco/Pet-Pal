@@ -235,7 +235,7 @@ function servingsLeftDry(mealsPerDay, amountOfFood) {
   return servingsRemaining;
 }
 
-var petPalPet = {
+var PetPalPet = {
   dayMade: "",
   pet: {
     name: "",
@@ -294,4 +294,19 @@ function pullFromLocal(name) {
 // Saves 'toPush' in local storage as 'name'
 function pushToLocal(name, toPush) {
   localStorage.setItem(name, JSON.stringify(toPush));
+}
+
+// Call for testing
+grabPetInfo();
+
+// Function for "save changes" event handler
+function grabPetInfo(){
+  PetPalPet.dayMade = daysSince2000(dayjs().format('DDMMYY'));
+  PetPalPet.pet.name = $('#pet-name-input').val();
+  // Not sure how this input type works yet
+  // PetPalPet.pet.type = 
+  PetPalPet.pantry.meals = $('#meals-select').val();
+  PetPalPet.pantry.type =
+
+  console.log(PetPalPet);
 }
