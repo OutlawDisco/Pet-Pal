@@ -204,6 +204,18 @@ var PetPalPet = {
     bags: 0,
     lbsPerBag: 0,
     daysLeft: function () {
+      if(this.meals == ""){
+        return null;
+      }
+      if(this.lbsPerServing == ""){
+        return null;
+      }
+      if(this.bags == ""){
+        return null;
+      }
+      if(this.lbsPerBag == ""){
+        return null;
+      }
       var totalLbs = this.bags * this.lbsPerBag;
       var foodPerDay = this.meals * this.lbsPerServing;
       var servingsLeft = totalLbs / foodPerDay;
@@ -215,6 +227,7 @@ var PetPalPet = {
       this.meals = $('#meals-select').val();
       this.lbsPerServing = $('#dry-food-meal-input').val();
       this.bags = $('#dry-inventory-bags').val();
+      console.log($('#dry-inventory-bags').val());
       this.lbsPerBag = $('#dry-inventory-lbs').val();
     },
     copyValues: function (copy){
@@ -232,6 +245,18 @@ var PetPalPet = {
     cans: 0,
     ozPerCan: 0,
     daysLeft: function () {
+      if(this.meals == ""){
+        return null;
+      }
+      if(this.ozPerServing == ""){
+        return null;
+      }
+      if(this.cans == ""){
+        return null;
+      }
+      if(this.ozPerCan == ""){
+        return null;
+      }
       var totalOzs = this.cans * this.ozPerCan;
       var foodPerDay = this.meals * this.ozPerServing;
       var servingsLeft = totalOzs / foodPerDay;
@@ -269,6 +294,7 @@ var PetPalPet = {
     this.dryFood.initalizeValues(currDay);
     this.wetFood.initalizeValues(currDay);
     this.grooming.initalizeValues();
+    console.log(PetPalPet);
   },
   pullValsFromLocal: function (){
     var stored = JSON.parse(localStorage.getItem('pet'));
@@ -327,11 +353,18 @@ $('#pantry-submit').on('click', function(e){
   PetPalPet.initalizeValues();
   pushToLocal("pet", PetPalPet);
   $('#profile-modal').addClass('d-none');
+  $('#pet-name').text(PetPalPet.pet.name);
   console.log(PetPalPet);
   updatePantryTab();
 });
 
 function updatePantryTab (){
-  $('#dry-food-remaining').text(parseFloat(PetPalPet.dryFood.daysLeft()).toFixed(2));
-  $('#wet-food-remaining').text(parseFloat(PetPalPet.wetFood.daysLeft()).toFixed(2));
+  if(PetPalPet.dryFood.daysLeft() !== null){
+    $('#dry-food-remaining').text(parseFloat(PetPalPet.dryFood.daysLeft()).toFixed(2));
+    $('#pantry-dry-text').removeClass('d-none');
+  }
+  if(PetPalPet.wetFood.daysLeft() !== null){
+    $('#wet-food-remaining').text(parseFloat(PetPalPet.wetFood.daysLeft()).toFixed(2));
+    $('#pantry-wet-text').removeClass('d-none');
+  }
 }
