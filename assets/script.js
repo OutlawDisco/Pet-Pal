@@ -4,6 +4,8 @@ $(function () {
   if (city) {
     $("#city-input").val(city);
     getWeatherData(city);
+  } else {
+    getWeatherData("denver");
   }
   $("#dog-breed").text("Search for a dog breed!");
   $("#dog-temperament").text("");
