@@ -20,7 +20,9 @@ $(function () {
       dataType: "json",
       success: function (data) {
         $("#weather-title").text(`${data.name} `);
-        $("#weather-temp").text(`${data.main.temp}°F - ${data.weather[0].main}`);
+        $("#weather-temp").text(
+          `${data.main.temp}°F - ${data.weather[0].main}`
+        );
         $("#weather-date").text();
         $("#weather-icon").attr(
           "src",
@@ -201,16 +203,12 @@ var PetPalPet = {
     lbsPerServing: 0,
     bags: 0,
     lbsPerBag: 0,
-    daysLeft: function (){
+    servingsLeft: function () {
       var totalLbs = this.bags * this.lbsPerBag;
       var foodPerDay = this.meals * this.lbsPerServing;
       var servingsLeft = totalLbs / foodPerDay;
-      return servingsLeft - (daysSince2000(dayjs().format('DDMMYY')) - dayMade);
+      return servingsLeft;
     },
-    initalizeValues: function (day){
-      this.dayMade = day;
-      // get values using jQuery
-    }
   },
   wetFood: {
     dayMade: 0,
@@ -218,33 +216,29 @@ var PetPalPet = {
     ozPerServing: 0,
     cans: 0,
     ozPerCan: 0,
-    daysLeft: function (){
+    servingsLeft: function () {
       var totalOzs = this.cans * this.ozPerCan;
       var foodPerDay = this.meals * this.ozPerServing;
       var servingsLeft = totalOzs / foodPerDay;
       return servingsLeft;
     },
-    initalizeValues: function (day){
-      this.dayMade = day;
-      // get values using jQuery
-    }
   },
   grooming: {
     skin: "",
     coat: "",
     length: "",
     shedding: false,
-    initalizeValues: function (){
+    initalizeValues: function () {
       // get values using jQuery
-    }
+    },
   },
-  initalizeValues: function (){
-    var currDay = daysSince2000(dayjs().format('DDMMYY'));
+  initalizeValues: function () {
+    var currDay = daysSince2000(dayjs().format("DDMMYY"));
     this.dayMade = currDay;
     this.dryFood.initalizeValues(currDay);
     this.wetFood.initalizeValues(currDay);
     this.grooming.initalizeValues();
-  }
+  },
 };
 
 // Converts DDMMYY format into the amount of days since year 2000
@@ -277,4 +271,39 @@ function pullFromLocal(name) {
 // Saves 'toPush' in local storage as 'name'
 function pushToLocal(name, toPush) {
   localStorage.setItem(name, JSON.stringify(toPush));
+}
+
+// Call for testing
+grabPetInfo();
+
+// Function for "save changes" event handler
+function grabPetInfo() {
+  PetPalPet.dayMade = daysSince2000(dayjs().format("DDMMYY"));
+  PetPalPet.pet.name = $("#pet-name-input").val();
+  // Not sure how this input type works yet
+
+  // PetPalPet.pet.type =
+  if (/* Dry food checkbox is checked */ true) {
+    PetPalPet.dryFood.meals = $("#meals-select").val();
+    PetPalPet.dryFood.cupsPerServing = $("#dry-food-meal-input").val();
+    PetPalPet.dryFood.bags = $("#dry-inventory").children("input").eq(0).val();
+    PetPalPet.dryFood.lbsPerBag = $("#dry-inventory")
+      .children("input")
+      .eq(1)
+      .val();
+  }
+  if (/* Wet food checkbox is checked */ true) {
+    PetPalPet.wetFood.meals = $("#meals-select").val();
+    PetPalPet.wetFood.cupsPerServing = $("#wet-food-meal-input").val();
+    PetPalPet.wetFood.cans = $("#wet-inventory").children("input").eq(0).val();
+    PetPalPet.wetFood.ozPerCan = $("#wet-inventory")
+      .children("input")
+      .eq(1)
+      .val();
+  }
+
+  // add stuff for grooming tab
+
+  console.log(PetPalPet);
+  console.log($("#dry-food-check-input"));
 }
