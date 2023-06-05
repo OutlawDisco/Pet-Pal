@@ -19,8 +19,8 @@ $(function () {
       type: "GET",
       dataType: "json",
       success: function (data) {
-        $("#weather-title").text(`${data.name} - ${data.weather[0].main}`);
-        $("#weather-temp").text(`Temperature: ${data.main.temp}°F`);
+        $("#weather-title").text(`${data.name} `);
+        $("#weather-temp").text(`${data.main.temp}°F - ${data.weather[0].main}`);
         $("#weather-date").text();
         $("#weather-icon").attr(
           "src",
