@@ -49,8 +49,14 @@ h5 {
   color: black;
 }
 
+
+.custom-caption h5{
+    color: white;
+}
+
 h5#dog-day-title {
   font-size: 170%;
+
 }
 
 a {
@@ -134,12 +140,13 @@ a:hover {
   max-height: 100%;
 }
 
-.carousel-item a {
-  text-decoration: none;
-  color: var(--deep-orange);
-  font-family: "Urbanist", sans-serif;
-  font-size: 16pt;
-  font-weight: 400;
+
+.carousel-item a{
+    text-decoration: none;
+    color: var(--deep-orange);
+    font-family: 'Urbanist', sans-serif;
+    font-size: 150%;
+    font-weight: 400;
 }
 
 .carousel-item a:hover {
@@ -187,4 +194,20 @@ blockquote {
   display: flex;
   justify-content: center;
   align-items: end;
+}
+
+
+@media screen and (min-width: 540px){
+    p.custom-text{
+        font-size: 150%;
+    }
+}
+
+@media screen and (max-width: 540px){
+    .custom-caption h5{
+        font-size: 140%;
+    }
+    .carousel-item a{
+        font-size: 100%;
+    }
 }
