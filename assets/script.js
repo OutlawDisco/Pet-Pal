@@ -241,13 +241,17 @@ var PetPalPet = {
     name: "",
     type: "",
   },
-  pantry: {
+  dryFood: {
     meals: "",
-    type: "",
-    oz: "",
-    lbs: "",
-    serving: "",
-    date: "",
+    cupsPerServing: "",
+    bags: "",
+    lbsPerBag: "",
+  },
+  wetFood: {
+    meals: "",
+    cupsPerServing: "",
+    cans: "",
+    ozPerCan: "",
   },
   grooming: {
     skin: "",
@@ -305,8 +309,21 @@ function grabPetInfo(){
   PetPalPet.pet.name = $('#pet-name-input').val();
   // Not sure how this input type works yet
   // PetPalPet.pet.type = 
-  PetPalPet.pantry.meals = $('#meals-select').val();
-  PetPalPet.pantry.type =
+  if(/* Dry food checkbox is checked */ true){
+    PetPalPet.dryFood.meals = $('#meals-select').val();
+    PetPalPet.dryFood.cupsPerServing = $('#dry-food-meal-input').val();
+    PetPalPet.dryFood.bags = $('#dry-inventory').children('input').eq(0).val();
+    PetPalPet.dryFood.lbsPerBag = $('#dry-inventory').children('input').eq(1).val();
+  }
+  if(/* Wet food checkbox is checked */ true){
+    PetPalPet.wetFood.meals = $('#meals-select').val();
+    PetPalPet.wetFood.cupsPerServing = $('#wet-food-meal-input').val();
+    PetPalPet.wetFood.cans = $('#wet-inventory').children('input').eq(0).val();
+    PetPalPet.wetFood.ozPerCan = $('#wet-inventory').children('input').eq(1).val();
+  }
+
+  // add stuff for grooming tab
 
   console.log(PetPalPet);
+  console.log($('#dry-food-check-input'));
 }
