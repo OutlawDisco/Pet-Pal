@@ -87,11 +87,11 @@
           <div id="pantry-dry-food">   
           <label for="dry-meal-portion" class="form-label mt-3">Specify the quantity of dry food per serving</label>
           <div id="dry-food-meal" class="input-group input-group-sm mb-3">
-              <input type="text" class="form-control" aria-label="dry-meal-portion">
+              <input id="dry-food-meal-input" type="text" class="form-control" aria-label="dry-meal-portion">
               <span class="input-group-text"> cups </span>
             </div>
-          <label for="wet-inventory" class="form-label mt-3">Specify your current inventory of dry food</label>
-          <div id="wet-inventory" class="input-group input-group-sm mb-3">
+          <label for="dry-inventory" class="form-label mt-3">Specify your current inventory of dry food</label>
+          <div id="dry-inventory" class="input-group input-group-sm mb-3">
               <input type="text" class="form-control" aria-label="dry-inventory-bags">
               <span class="input-group-text"> bags </span>
               <input type="text" class="form-control" aria-label="dry-inventory-lbs">
@@ -110,7 +110,7 @@
           <div id="pantry-wet-food"> 
           <label for="wet-meal-portion" class="form-label mt-3">Specify the quantity of wet food per serving</label>
           <div id="wet-food-meal" class="input-group input-group-sm mb-3">
-              <input type="text" class="form-control" aria-label="wet-meal-portion">
+              <input id="wet-food-meal-input" type="text" class="form-control" aria-label="wet-meal-portion">
               <span class="input-group-text"> cups </span>
             </div>
           <label for="wet-inventory" class="form-label mt-3">Specify your current inventory of wet food</label>
@@ -122,87 +122,7 @@
             </div>
           </div>
         </section>
-        <section class="grooming">
-            <h3 class="mt-5"> GROOMING: </h3>
-            <section class="skin-type-chk">
-              <h6>Skin Type</h6>
-              <div class="form-check">
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  value=""
-                  id="flexCheckDefault"
-                />
-                <label class="form-check-label" for="flexCheckDefault">
-                  Oily
-                </label>
-              </div>
-              <div class="form-check">
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  value=""
-                  id="flexCheckChecked"
-                  checked
-                />
-                <label class="form-check-label" for="flexCheckChecked">
-                  Dry
-                </label>
-              </div>
-              <div class="form-check">
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  value=""
-                  id="flexCheckChecked"
-                  checked
-                />
-                <label class="form-check-label" for="flexCheckChecked">
-                  Sensative
-                </label>
-              </div>
-            </section>
-            <form class="Coat-input">
-              <select class="coat-type" aria-label="Coat Type">
-                <option selected>Select coat type</option>
-                <option value="1">Smooth/Short</option>
-                <option value="2"><Double/Combination></option>
-                <option value="3">Silky/Nat.Long</option>
-                <option value="4">Curly/Wavy</option>
-              </select>
-              <select class="coat-length" aria-label="Coat Length">
-                <option selected>Select hair length</option>
-                <option value="1">Smooth/Short under 1/2"</option>
-                <option value="2">Medium</option>
-                <option value="3">Long 2"+</option>
-              </select>
-              <!-- check boxes-->
-
-              <section>
-                <div class="form-check">
-                  <input
-                    class="check-input"
-                    type="checkbox"
-                    value=""
-                    id="flexCheckDefault"
-                  />
-                  <label class="form-check-label" for="flexCheckDefault">
-                    Shedding
-                  </label>
-                </div>
-                <div class="form-check">
-                  <input
-                    class="check-input"
-                    type="checkbox"
-                    value=""
-                    id="flexCheckDefault"
-                    checked
-                  />
-                  <label class="form-check-label" for="flexCheckChecked">
-                    Non shedding
-                  </label>
-                </div>
-              </section>
+        
             </form>
           </section>
           </div>
@@ -227,6 +147,7 @@
       <!-- end header -->
 
       <!-- accordion for food, activity, grooming, and resources -->
+      <!-- Food Section -->
       <div class="accordion" id="accordion-options">
         <div class="accordion-item">
           <button
@@ -259,7 +180,7 @@
             </div>
           </div>
         </div>
-
+<!-- Activity Section -->
         <div class="accordion-item">
           <button
 
@@ -361,7 +282,7 @@
             </div>
           </div>
         </div>
-
+<!-- Grooming section -->
         <div class="accordion-item">
           <button
             class="accordion-button collapsed w-100 d-flex justify-content-end position-relative custom-tab"
@@ -381,6 +302,7 @@
           >
             <div class="accordion-body custom-tab-body">
               <section class="grooming">
+
                 <div id="carousel-container" class="col-sm-12 col-md-5 mt-3 p-2">   
                   <div id="pet-product-carousel" class="carousel slide d-flex align-items-center p-2" data-ride="carousel">
                     <div class="carousel-inner">
@@ -449,10 +371,13 @@
                
                  
               </section>
+
+           
+
             </div>
           </div>
         </div>
-
+<!-- Resources section -->
         <div class="accordion-item">
           <button
             class="accordion-button collapsed w-100 d-flex justify-content-end position-relative custom-tab"
