@@ -216,33 +216,39 @@ function servingsLeftWet(mealPerDay, amountOfFood) {
 }
 
 // Function steps for "servings left" on dry food
-function servingsLeftDry(mealsPerDay, amountOfFood) {
-  // convert bags on hand to pounds
-  var bagOnHand = pantry.dryFood;
-  // convert pounds to dry-cups
-  var BOH = parseFloat(servingsPerBag(amountOfFood, bagOnHand.lbs));
-  // divide dry-cups # by food-per-servings# = servings total
-  // divide servings total by days in a week = servings left
-  var servingsRemaining = BOH * bagOnHand.qty - mealsPerDay;
-  console.log(BOH);
-  console.log(servingsRemaining / BOH);
-  // display servings left of dry food
-  return servingsRemaining;
+function servingsLeftDry() {
+  
 }
 
 var PetPalPet = {
-  dayMade: "",
+  dayMade: 0,
   pet: {
     name: "",
-    type: "",
+    type: "dog",
   },
-  pantry: {
-    meals: "",
-    type: "",
-    oz: "",
-    lbs: "",
-    serving: "",
-    date: "",
+  dryFood: {
+    meals: 0,
+    lbsPerServing: 0,
+    bags: 0,
+    lbsPerBag: 0,
+    servingsLeft: function (){
+      var totalLbs = this.bags * this.lbsPerBag;
+      var foodPerDay = this.meals * this.lbsPerServing;
+      var servingsLeft = totalLbs / foodPerDay;
+      return servingsLeft;
+    }
+  },
+  wetFood: {
+    meals: 0,
+    ozPerServing: 0,
+    cans: 0,
+    ozPerCan: 0,
+    servingsLeft: function (){
+      var totalOzs = this.cans * this.ozPerCan;
+      var foodPerDay = this.meals * this.ozPerServing;
+      var servingsLeft = totalOzs / foodPerDay;
+      return servingsLeft;
+    }
   },
   grooming: {
     skin: "",
@@ -282,7 +288,7 @@ function pullFromLocal(name) {
   if (stored !== null) {
     return stored;
   } else {
-    return [];
+    return PetPalPet;
   }
 }
 
@@ -299,7 +305,23 @@ function grabPetInfo() {
   PetPalPet.dayMade = daysSince2000(dayjs().format("DDMMYY"));
   PetPalPet.pet.name = $("#pet-name-input").val();
   // Not sure how this input type works yet
-  // PetPalPet.pet.type =
-  PetPalPet.pantry.meals = $("#meals-select").val();
-  PetPalPet.pantry.type = console.log(PetPalPet);
+
+  // PetPalPet.pet.type = 
+  if(/* Dry food checkbox is checked */ true){
+    PetPalPet.dryFood.meals = $('#meals-select').val();
+    PetPalPet.dryFood.cupsPerServing = $('#dry-food-meal-input').val();
+    PetPalPet.dryFood.bags = $('#dry-inventory').children('input').eq(0).val();
+    PetPalPet.dryFood.lbsPerBag = $('#dry-inventory').children('input').eq(1).val();
+  }
+  if(/* Wet food checkbox is checked */ true){
+    PetPalPet.wetFood.meals = $('#meals-select').val();
+    PetPalPet.wetFood.cupsPerServing = $('#wet-food-meal-input').val();
+    PetPalPet.wetFood.cans = $('#wet-inventory').children('input').eq(0).val();
+    PetPalPet.wetFood.ozPerCan = $('#wet-inventory').children('input').eq(1).val();
+  }
+
+  // add stuff for grooming tab
+
+  console.log(PetPalPet);
+  console.log($('#dry-food-check-input'));
 }
