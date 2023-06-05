@@ -71,13 +71,13 @@
             <label for="dry-meal-portion" class="form-label mt-3">Specify the quantity of dry food per serving</label>
             <div id="dry-food-meal" class="input-group input-group-sm mb-3">
               <input id="dry-food-meal-input" type="text" class="form-control" aria-label="dry-meal-portion">
-              <span class="input-group-text">cups</span>
+              <span class="input-group-text">lbs.</span>
             </div>
             <label for="dry-inventory" class="form-label mt-3">Specify your current inventory of dry food</label>
             <div id="dry-inventory" class="input-group input-group-sm mb-3">
-              <input type="text" class="form-control" aria-label="dry-inventory-bags">
+              <input type="text" class="form-control" id="dry-inventory-bags" aria-label="dry-inventory-bags">
               <span class="input-group-text">bag(s)</span>
-              <input type="text" class="form-control" aria-label="dry-inventory-lbs">
+              <input type="text" class="form-control" id="dry-inventory-lbs" aria-label="dry-inventory-lbs">
               <span class="input-group-text">lbs. per bag</span>
             </div>
           </div>
@@ -119,7 +119,7 @@
         <div class="col-12 d-flex flex-column align-items-center custom-pet-header ">
           <h1><span class="text-white">Pet</span>Pal</h1>
             <img id="pet-img" class="rounded-circle border p-3" src="user-pet-image" alt="Pet Image" />
-              <h5 class="text-center p-3">Pet Name</h5>
+              <h5 id="pet-name" class="text-center p-3">Pet Name</h5>
         </div>
       </header>
       <!-- end header -->
@@ -148,8 +148,8 @@
             <div class="accordion-body custom-tab-body">
               <div class="custom-pantry-box w-100 d-flex flex-column rounded p-2">
                 <h5> Pantry </h5>
-                <p class="pt-2"> You have <span id="dry-food-remaining" class="fw-bold text-success"> 40 </span> days of dry food remaining </p>
-                <p class="pt-2"> You have <span id="wet-food-remaining" class="fw-bold text-danger"> 0 </span> days of wet food remaining </p>
+                <p class="pt-2"> You have <span id="dry-food-remaining" class="fw-bold text-success"> N/A </span> days of dry food remaining </p>
+                <p class="pt-2"> You have <span id="wet-food-remaining" class="fw-bold text-danger"> N/A </span> days of wet food remaining </p>
                 <!-- <p class="pt-2"> You have <span class="fw-bold text-success"> 10 </span> treats remaining </p> -->
 
               
