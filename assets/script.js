@@ -19,8 +19,10 @@ $(function () {
       type: "GET",
       dataType: "json",
       success: function (data) {
-        $("#weather-title").text(`${data.name} - ${data.weather[0].main}`);
-        $("#weather-temp").text(`Temperature: ${data.main.temp}°F`);
+        $("#weather-title").text(`${data.name} `);
+        $("#weather-temp").text(
+          `${data.main.temp}°F - ${data.weather[0].main}`
+        );
         $("#weather-date").text();
         $("#weather-icon").attr(
           "src",
@@ -201,7 +203,7 @@ var PetPalPet = {
     lbsPerServing: 0,
     bags: 0,
     lbsPerBag: 0,
-    daysLeft: function (){
+    servingsLeft: function () {
       var totalLbs = this.bags * this.lbsPerBag;
       var foodPerDay = this.meals * this.lbsPerServing;
       var servingsLeft = totalLbs / foodPerDay;
@@ -229,7 +231,7 @@ var PetPalPet = {
     ozPerServing: 0,
     cans: 0,
     ozPerCan: 0,
-    daysLeft: function (){
+    servingsLeft: function () {
       var totalOzs = this.cans * this.ozPerCan;
       var foodPerDay = this.meals * this.ozPerServing;
       var servingsLeft = totalOzs / foodPerDay;
@@ -256,12 +258,12 @@ var PetPalPet = {
     coat: "",
     length: "",
     shedding: false,
-    initalizeValues: function (){
+    initalizeValues: function () {
       // get values using jQuery
-    }
+    },
   },
-  initalizeValues: function (){
-    var currDay = daysSince2000(dayjs().format('DDMMYY'));
+  initalizeValues: function () {
+    var currDay = daysSince2000(dayjs().format("DDMMYY"));
     this.dayMade = currDay;
     this.pet.name = $('#pet-name-input').val();
     this.dryFood.initalizeValues(currDay);
@@ -318,6 +320,7 @@ function pullFromLocal(name) {
 function pushToLocal(name, toPush) {
   localStorage.setItem(name, JSON.stringify(toPush));
 }
+
 
 $('#pantry-submit').on('click', function(e){
   e.preventDefault();
