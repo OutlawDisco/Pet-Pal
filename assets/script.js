@@ -142,7 +142,18 @@ $(function () {
         breeds.push(data[i].name);
       }
       $("#breed-input").autocomplete({
-        source: breeds,
+        source: function (request, response) {
+          // compare what is currently in the breed input with the list of breeds
+          // if there are matches, then display the first 6
+          var matches = $.grep(breeds, function (breed) {
+            return (
+              breed.substring(0, request.term.length).toLowerCase() ===
+              request.term.toLowerCase()
+            );
+          });
+          // returns only the first 6 matches.
+          response(matches.slice(0, 6));
+        },
       });
     },
   });
