@@ -205,11 +205,22 @@ var PetPalPet = {
       var totalLbs = this.bags * this.lbsPerBag;
       var foodPerDay = this.meals * this.lbsPerServing;
       var servingsLeft = totalLbs / foodPerDay;
-      return servingsLeft - (daysSince2000(dayjs().format('DDMMYY')) - dayMade);
+      servingsLeft -= (daysSince2000(dayjs().format('DDMMYY')) - this.dayMade);
+      return servingsLeft;
     },
     initalizeValues: function (day){
       this.dayMade = day;
-      // get values using jQuery
+      this.meals = $('#meals-select').val();
+      this.lbsPerServing = $('#dry-food-meal-input').val();
+      this.bags = $('#dry-inventory-bags').val();
+      this.lbsPerBag = $('#dry-inventory-lbs').val();
+    },
+    copyValues: function (copy){
+      this.dayMade = copy.dayMade;
+      this.meals = copy.meals;
+      this.lbsPerServing = copy.lbsPerServing;
+      this.bags = copy.bags;
+      this.lbsPerBag = copy.lbsPerBag;
     }
   },
   wetFood: {
@@ -222,11 +233,22 @@ var PetPalPet = {
       var totalOzs = this.cans * this.ozPerCan;
       var foodPerDay = this.meals * this.ozPerServing;
       var servingsLeft = totalOzs / foodPerDay;
+      servingsLeft -= (daysSince2000(dayjs().format('DDMMYY')) - this.dayMade);
       return servingsLeft;
     },
     initalizeValues: function (day){
       this.dayMade = day;
-      // get values using jQuery
+      this.meals = $('#meals-select').val();
+      this.ozPerServing = $('#wet-food-meal-input').val();
+      this.cans = $('#wet-inventory-cans').val();
+      this.ozPerCan = $('#wet-inventory-oz').val();
+    },
+    copyValues: function (copy){
+      this.dayMade = copy.dayMade;
+      this.meals = copy.meals;
+      this.ozPerServing = copy.ozPerServing;
+      this.cans = copy.cans;
+      this.ozPerCan = copy.ozPerCan;
     }
   },
   grooming: {
@@ -241,11 +263,27 @@ var PetPalPet = {
   initalizeValues: function (){
     var currDay = daysSince2000(dayjs().format('DDMMYY'));
     this.dayMade = currDay;
+    this.pet.name = $('#pet-name-input').val();
     this.dryFood.initalizeValues(currDay);
     this.wetFood.initalizeValues(currDay);
     this.grooming.initalizeValues();
+  },
+  pullValsFromLocal: function (){
+    var stored = JSON.parse(localStorage.getItem('pet'));
+    if(stored !== null){
+      this.dayMade = stored.dayMade;
+      this.pet.name = stored.pet.name;
+      this.dryFood.copyValues(stored.dryFood);
+      this.wetFood.copyValues(stored.wetFood);
+      $('#profile-modal').addClass('d-none');
+      $('#pet-name').text(this.pet.name);
+    }
   }
 };
+
+PetPalPet.pullValsFromLocal();
+console.log(PetPalPet);
+updatePantryTab();
 
 // Converts DDMMYY format into the amount of days since year 2000
 function daysSince2000(day) {
@@ -265,16 +303,32 @@ function daysSince2000(day) {
 }
 
 // Pulls 'name' from localStorage and returns it
+// NOT USED
 function pullFromLocal(name) {
   var stored = JSON.parse(localStorage.getItem(name));
   if (stored !== null) {
-    return stored;
+    PetPalPet = stored;
+    $('#profile-modal').addClass('d-none');
   } else {
-    return PetPalPet;
+    return;
   }
 }
 
 // Saves 'toPush' in local storage as 'name'
 function pushToLocal(name, toPush) {
   localStorage.setItem(name, JSON.stringify(toPush));
+}
+
+$('#pantry-submit').on('click', function(e){
+  e.preventDefault();
+  PetPalPet.initalizeValues();
+  pushToLocal("pet", PetPalPet);
+  $('#profile-modal').addClass('d-none');
+  console.log(PetPalPet);
+  updatePantryTab();
+});
+
+function updatePantryTab (){
+  $('#dry-food-remaining').text(parseFloat(PetPalPet.dryFood.daysLeft()).toFixed(2));
+  $('#wet-food-remaining').text(parseFloat(PetPalPet.wetFood.daysLeft()).toFixed(2));
 }
