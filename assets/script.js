@@ -194,37 +194,6 @@ function servingPerBag(dryCup, bagAmount) {
 
 //create function that subtracts # servings-per-day from Pantry (servings left wet/dry) every 24hrs
 
-// To Do: store user input for #'s
-var pantry = {
-  wetFood: {
-    qty: 1, //cans
-    oz: 12.2, //oz per can
-  },
-  dryFood: {
-    qty: 0.5, // bags
-    lbs: 5, //lbs per bag
-  },
-};
-
-// Function steps for "servings left" on wet food
-function servingsLeftWet(mealPerDay, amountOfFood) {
-  // convert can oz # to wet-cups #
-  var canOnHand = pantry.wetFood;
-  // divide wet-cups # by food-per-serving# = servings total
-  var SPC = parseFloat(servingsPerCan(amountOfFood, canOnHand.oz));
-  // divide servings total by days in the week = servings left
-  var servingsRemaining = SPC * canOnHand.qty - mealPerDay;
-  console.log(SPC);
-  console.log(servingsRemaining / SPC); //% of the can left
-  // display servings left in wet food
-  return servingsRemaining;
-}
-
-// Function steps for "servings left" on dry food
-function servingsLeftDry() {
-  
-}
-
 var PetPalPet = {
   dayMade: 0,
   pet: {
@@ -232,27 +201,37 @@ var PetPalPet = {
     type: "dog",
   },
   dryFood: {
+    dayMade: 0,
     meals: 0,
     lbsPerServing: 0,
     bags: 0,
     lbsPerBag: 0,
-    servingsLeft: function (){
+    daysLeft: function (){
       var totalLbs = this.bags * this.lbsPerBag;
       var foodPerDay = this.meals * this.lbsPerServing;
       var servingsLeft = totalLbs / foodPerDay;
-      return servingsLeft;
+      return servingsLeft - (daysSince2000(dayjs().format('DDMMYY')) - dayMade);
+    },
+    initalizeValues: function (day){
+      this.dayMade = day;
+      // get values using jQuery
     }
   },
   wetFood: {
+    dayMade: 0,
     meals: 0,
     ozPerServing: 0,
     cans: 0,
     ozPerCan: 0,
-    servingsLeft: function (){
+    daysLeft: function (){
       var totalOzs = this.cans * this.ozPerCan;
       var foodPerDay = this.meals * this.ozPerServing;
       var servingsLeft = totalOzs / foodPerDay;
       return servingsLeft;
+    },
+    initalizeValues: function (day){
+      this.dayMade = day;
+      // get values using jQuery
     }
   },
   grooming: {
@@ -260,14 +239,17 @@ var PetPalPet = {
     coat: "",
     length: "",
     shedding: false,
+    initalizeValues: function (){
+      // get values using jQuery
+    }
   },
-  subtractFood: function () {
-    var numDaysPassed = daysSince2000(dayjs().format("DDMMYY")) - this.dayMade;
-    // add math to multiply the number of days by the amount of food per day
-  },
-  initializeDay: function () {
-    this.dayMade = daysSince2000(dayjs().format("DDMMYY"));
-  },
+  initalizeValues: function (){
+    var currDay = daysSince2000(dayjs().format('DDMMYY'));
+    this.dayMade = currDay;
+    this.dryFood.initalizeValues(currDay);
+    this.wetFood.initalizeValues(currDay);
+    this.grooming.initalizeValues();
+  }
 };
 
 // Converts DDMMYY format into the amount of days since year 2000
@@ -300,32 +282,4 @@ function pullFromLocal(name) {
 // Saves 'toPush' in local storage as 'name'
 function pushToLocal(name, toPush) {
   localStorage.setItem(name, JSON.stringify(toPush));
-}
-
-// Call for testing
-grabPetInfo();
-
-// Function for "save changes" event handler
-function grabPetInfo(){
-  PetPalPet.dayMade = daysSince2000(dayjs().format('DDMMYY'));
-  PetPalPet.pet.name = $('#pet-name-input').val();
-  // Not sure how this input type works yet
-  // PetPalPet.pet.type = 
-  if(/* Dry food checkbox is checked */ true){
-    PetPalPet.dryFood.meals = $('#meals-select').val();
-    PetPalPet.dryFood.cupsPerServing = $('#dry-food-meal-input').val();
-    PetPalPet.dryFood.bags = $('#dry-inventory').children('input').eq(0).val();
-    PetPalPet.dryFood.lbsPerBag = $('#dry-inventory').children('input').eq(1).val();
-  }
-  if(/* Wet food checkbox is checked */ true){
-    PetPalPet.wetFood.meals = $('#meals-select').val();
-    PetPalPet.wetFood.cupsPerServing = $('#wet-food-meal-input').val();
-    PetPalPet.wetFood.cans = $('#wet-inventory').children('input').eq(0).val();
-    PetPalPet.wetFood.ozPerCan = $('#wet-inventory').children('input').eq(1).val();
-  }
-
-  // add stuff for grooming tab
-
-  console.log(PetPalPet);
-  console.log($('#dry-food-check-input'));
 }
