@@ -31,22 +31,28 @@ h1{
 
 h2{
     font-family: 'Urbanist', sans-serif;
+    font-size: 200%;
     font-weight: 600;
     color: white;
-    font-size: 200%;
 }
 
 h4{
     text-align: center;
     font-family: 'Urbanist', sans-serif;
+    font-size: 250%;
+    font-weight: 600;
     color: var(--deep-orange);
-    font-weight: 600;  
-    font-size: 200%;
 }
 
 h5{
     font-family: 'Urbanist', sans-serif;
-    font-size: 150%;
+    font-size: 200%;
+    font-weight: 600;
+    color: black;
+}
+
+h5#dog-day-title{
+    font-size: 170%;
 }
 
 a{
@@ -142,6 +148,11 @@ a:hover{
     font-weight: 600;
 }
 
+p.custom-text{
+    font-size: 100%;
+    font-weight: 300;
+}
+
 #carousel-header{
     align-self: center;
     color: var(--deep-orange);
@@ -175,3 +186,8 @@ img.custom-carousel-img{
     background-color: white;
 }
 
+@media screen and (min-width: 540px){
+    p.custom-text{
+        font-size: 150%;
+    }
+}
