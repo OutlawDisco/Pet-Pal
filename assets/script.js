@@ -204,39 +204,40 @@ var PetPalPet = {
     bags: 0,
     lbsPerBag: 0,
     daysLeft: function () {
-      if(this.meals == ""){
+      if (this.meals == "") {
         return null;
       }
-      if(this.lbsPerServing == ""){
+      if (this.lbsPerServing == "") {
         return null;
       }
-      if(this.bags == ""){
+      if (this.bags == "") {
         return null;
       }
-      if(this.lbsPerBag == ""){
+      if (this.lbsPerBag == "") {
         return null;
       }
       var totalLbs = this.bags * this.lbsPerBag;
+      var totalCups = totalLbs * 4;
       var foodPerDay = this.meals * this.lbsPerServing;
-      var servingsLeft = totalLbs / foodPerDay;
-      servingsLeft -= (daysSince2000(dayjs().format('DDMMYY')) - this.dayMade);
+      var servingsLeft = totalCups / foodPerDay;
+      servingsLeft -= daysSince2000(dayjs().format("DDMMYY")) - this.dayMade;
       return servingsLeft;
     },
-    initalizeValues: function (day){
+    initalizeValues: function (day) {
       this.dayMade = day;
-      this.meals = $('#meals-select').val();
-      this.lbsPerServing = $('#dry-food-meal-input').val();
-      this.bags = $('#dry-inventory-bags').val();
-      console.log($('#dry-inventory-bags').val());
-      this.lbsPerBag = $('#dry-inventory-lbs').val();
+      this.meals = $("#meals-select").val();
+      this.lbsPerServing = $("#dry-food-meal-input").val();
+      this.bags = $("#dry-inventory-bags").val();
+      console.log($("#dry-inventory-bags").val());
+      this.lbsPerBag = $("#dry-inventory-lbs").val();
     },
-    copyValues: function (copy){
+    copyValues: function (copy) {
       this.dayMade = copy.dayMade;
       this.meals = copy.meals;
       this.lbsPerServing = copy.lbsPerServing;
       this.bags = copy.bags;
       this.lbsPerBag = copy.lbsPerBag;
-    }
+    },
   },
   wetFood: {
     dayMade: 0,
@@ -245,38 +246,38 @@ var PetPalPet = {
     cans: 0,
     ozPerCan: 0,
     daysLeft: function () {
-      if(this.meals == ""){
+      if (this.meals == "") {
         return null;
       }
-      if(this.ozPerServing == ""){
+      if (this.ozPerServing == "") {
         return null;
       }
-      if(this.cans == ""){
+      if (this.cans == "") {
         return null;
       }
-      if(this.ozPerCan == ""){
+      if (this.ozPerCan == "") {
         return null;
       }
       var totalOzs = this.cans * this.ozPerCan;
       var foodPerDay = this.meals * this.ozPerServing;
       var servingsLeft = totalOzs / foodPerDay;
-      servingsLeft -= (daysSince2000(dayjs().format('DDMMYY')) - this.dayMade);
+      servingsLeft -= daysSince2000(dayjs().format("DDMMYY")) - this.dayMade;
       return servingsLeft;
     },
-    initalizeValues: function (day){
+    initalizeValues: function (day) {
       this.dayMade = day;
-      this.meals = $('#meals-select').val();
-      this.ozPerServing = $('#wet-food-meal-input').val();
-      this.cans = $('#wet-inventory-cans').val();
-      this.ozPerCan = $('#wet-inventory-oz').val();
+      this.meals = $("#meals-select").val();
+      this.ozPerServing = $("#wet-food-meal-input").val();
+      this.cans = $("#wet-inventory-cans").val();
+      this.ozPerCan = $("#wet-inventory-oz").val();
     },
-    copyValues: function (copy){
+    copyValues: function (copy) {
       this.dayMade = copy.dayMade;
       this.meals = copy.meals;
       this.ozPerServing = copy.ozPerServing;
       this.cans = copy.cans;
       this.ozPerCan = copy.ozPerCan;
-    }
+    },
   },
   grooming: {
     skin: "",
@@ -290,23 +291,23 @@ var PetPalPet = {
   initalizeValues: function () {
     var currDay = daysSince2000(dayjs().format("DDMMYY"));
     this.dayMade = currDay;
-    this.pet.name = $('#pet-name-input').val();
+    this.pet.name = $("#pet-name-input").val();
     this.dryFood.initalizeValues(currDay);
     this.wetFood.initalizeValues(currDay);
     this.grooming.initalizeValues();
     console.log(PetPalPet);
   },
-  pullValsFromLocal: function (){
-    var stored = JSON.parse(localStorage.getItem('pet'));
-    if(stored !== null){
+  pullValsFromLocal: function () {
+    var stored = JSON.parse(localStorage.getItem("pet"));
+    if (stored !== null) {
       this.dayMade = stored.dayMade;
       this.pet.name = stored.pet.name;
       this.dryFood.copyValues(stored.dryFood);
       this.wetFood.copyValues(stored.wetFood);
-      $('#profile-modal').addClass('d-none');
-      $('#pet-name').text(this.pet.name);
+      $("#profile-modal").addClass("d-none");
+      $("#pet-name").text(this.pet.name);
     }
-  }
+  },
 };
 
 PetPalPet.pullValsFromLocal();
@@ -336,7 +337,7 @@ function pullFromLocal(name) {
   var stored = JSON.parse(localStorage.getItem(name));
   if (stored !== null) {
     PetPalPet = stored;
-    $('#profile-modal').addClass('d-none');
+    $("#profile-modal").addClass("d-none");
   } else {
     return;
   }
@@ -347,24 +348,27 @@ function pushToLocal(name, toPush) {
   localStorage.setItem(name, JSON.stringify(toPush));
 }
 
-
-$('#pantry-submit').on('click', function(e){
+$("#pantry-submit").on("click", function (e) {
   e.preventDefault();
   PetPalPet.initalizeValues();
   pushToLocal("pet", PetPalPet);
-  $('#profile-modal').addClass('d-none');
-  $('#pet-name').text(PetPalPet.pet.name);
+  $("#profile-modal").addClass("d-none");
+  $("#pet-name").text(PetPalPet.pet.name);
   console.log(PetPalPet);
   updatePantryTab();
 });
 
-function updatePantryTab (){
-  if(PetPalPet.dryFood.daysLeft() !== null){
-    $('#dry-food-remaining').text(parseFloat(PetPalPet.dryFood.daysLeft()).toFixed(2));
-    $('#pantry-dry-text').removeClass('d-none');
+function updatePantryTab() {
+  if (PetPalPet.dryFood.daysLeft() !== null) {
+    $("#dry-food-remaining").text(
+      parseFloat(PetPalPet.dryFood.daysLeft()).toFixed(2)
+    );
+    $("#pantry-dry-text").removeClass("d-none");
   }
-  if(PetPalPet.wetFood.daysLeft() !== null){
-    $('#wet-food-remaining').text(parseFloat(PetPalPet.wetFood.daysLeft()).toFixed(2));
-    $('#pantry-wet-text').removeClass('d-none');
+  if (PetPalPet.wetFood.daysLeft() !== null) {
+    $("#wet-food-remaining").text(
+      parseFloat(PetPalPet.wetFood.daysLeft()).toFixed(2)
+    );
+    $("#pantry-wet-text").removeClass("d-none");
   }
 }
