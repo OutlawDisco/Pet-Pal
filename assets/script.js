@@ -47,6 +47,10 @@ $(function () {
             dogDayText.text(
               "It's hot! Test the cement with your hand. If you can hold it for 7 seconds, it's pawsitively safe for a walk!"
             );
+          } else if (temperature < 30) {
+            dogDayText.text(
+              "Brrr! Put on a few extra layers for you and your dog !"
+            );
           } else {
             dogDayText.text("It's a beautiful day! Take your dog for a walk.");
           }
@@ -65,7 +69,7 @@ $(function () {
         } else if (weatherCondition === "thunderstorm") {
           dogDayTitle.text("Thunderstorm Alert!");
           dogDayText.text(
-            "Stay safe inside and bring out your dogs favorite toy!"
+            "Sit, Stay-In! Make sure your dog has a calm and quiet space in your home to ride out the storm."
           );
         } else {
           dogDayTitle.text("Be Cautious!");
