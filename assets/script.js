@@ -221,37 +221,39 @@ function servingsLeftWet(mealPerDay, amountOfFood) {
 }
 
 // Function steps for "servings left" on dry food
-function servingsLeftDry(mealsPerDay, amountOfFood) {
-  // convert bags on hand to pounds
-  var bagOnHand = pantry.dryFood;
-  // convert pounds to dry-cups
-  var BOH = parseFloat(servingsPerBag(amountOfFood, bagOnHand.lbs));
-  // divide dry-cups # by food-per-servings# = servings total
-  // divide servings total by days in a week = servings left
-  var servingsRemaining = BOH * bagOnHand.qty - mealsPerDay;
-  console.log(BOH);
-  console.log(servingsRemaining / BOH);
-  // display servings left of dry food
-  return servingsRemaining;
+function servingsLeftDry() {
+  
 }
 
 var PetPalPet = {
-  dayMade: "",
+  dayMade: 0,
   pet: {
     name: "",
-    type: "",
+    type: "dog",
   },
   dryFood: {
-    meals: "",
-    cupsPerServing: "",
-    bags: "",
-    lbsPerBag: "",
+    meals: 0,
+    lbsPerServing: 0,
+    bags: 0,
+    lbsPerBag: 0,
+    servingsLeft: function (){
+      var totalLbs = this.bags * this.lbsPerBag;
+      var foodPerDay = this.meals * this.lbsPerServing;
+      var servingsLeft = totalLbs / foodPerDay;
+      return servingsLeft;
+    }
   },
   wetFood: {
-    meals: "",
-    cupsPerServing: "",
-    cans: "",
-    ozPerCan: "",
+    meals: 0,
+    ozPerServing: 0,
+    cans: 0,
+    ozPerCan: 0,
+    servingsLeft: function (){
+      var totalOzs = this.cans * this.ozPerCan;
+      var foodPerDay = this.meals * this.ozPerServing;
+      var servingsLeft = totalOzs / foodPerDay;
+      return servingsLeft;
+    }
   },
   grooming: {
     skin: "",
@@ -291,7 +293,7 @@ function pullFromLocal(name) {
   if (stored !== null) {
     return stored;
   } else {
-    return [];
+    return PetPalPet;
   }
 }
 
