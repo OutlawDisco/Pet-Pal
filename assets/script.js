@@ -19,8 +19,10 @@ $(function () {
       type: "GET",
       dataType: "json",
       success: function (data) {
-        $("#weather-title").text(`${data.name} - ${data.weather[0].main}`);
-        $("#weather-temp").text(`Temperature: ${data.main.temp}°F`);
+        $("#weather-title").text(`${data.name} `);
+        $("#weather-temp").text(
+          `${data.main.temp}°F - ${data.weather[0].main}`
+        );
         $("#weather-date").text();
         $("#weather-icon").attr(
           "src",
@@ -189,35 +191,6 @@ function servingPerBag(dryCup, bagAmount) {
   return (bagAmount * 4) / dryCup;
 }
 
-// To Do: store user input for #'s
-var pantry = {
-  wetFood: {
-    qty: 1, //cans
-    oz: 12.2, //oz per can
-  },
-  dryFood: {
-    qty: 0.5, // bags
-    lbs: 5, //lbs per bag
-  },
-};
-
-// Function steps for "servings left" on wet food
-function servingsLeftWet(mealPerDay, amountOfFood) {
-  // convert can oz # to wet-cups #
-  var canOnHand = pantry.wetFood;
-  // divide wet-cups # by food-per-serving# = servings total
-  var SPC = parseFloat(servingsPerCan(amountOfFood, canOnHand.oz));
-  // divide servings total by days in the week = servings left
-  var servingsRemaining = SPC * canOnHand.qty - mealPerDay;
-  console.log(SPC);
-  console.log(servingsRemaining / SPC); //% of the can left
-  // display servings left in wet food
-  return servingsRemaining;
-}
-
-// Function steps for "servings left" on dry food
-function servingsLeftDry() {}
-
 var PetPalPet = {
   dayMade: 0,
   pet: {
@@ -225,6 +198,7 @@ var PetPalPet = {
     type: "dog",
   },
   dryFood: {
+    dayMade: 0,
     meals: 0,
     lbsPerServing: 0,
     bags: 0,
@@ -237,6 +211,7 @@ var PetPalPet = {
     },
   },
   wetFood: {
+    dayMade: 0,
     meals: 0,
     ozPerServing: 0,
     cans: 0,
@@ -253,13 +228,16 @@ var PetPalPet = {
     coat: "",
     length: "",
     shedding: false,
+    initalizeValues: function () {
+      // get values using jQuery
+    },
   },
-  subtractFood: function () {
-    var numDaysPassed = daysSince2000(dayjs().format("DDMMYY")) - this.dayMade;
-    // add math to multiply the number of days by the amount of food per day
-  },
-  initializeDay: function () {
-    this.dayMade = daysSince2000(dayjs().format("DDMMYY"));
+  initalizeValues: function () {
+    var currDay = daysSince2000(dayjs().format("DDMMYY"));
+    this.dayMade = currDay;
+    this.dryFood.initalizeValues(currDay);
+    this.wetFood.initalizeValues(currDay);
+    this.grooming.initalizeValues();
   },
 };
 

@@ -44,7 +44,13 @@ h4 {
 
 h5 {
   font-family: "Urbanist", sans-serif;
-  font-size: 150%;
+  font-size: 200%;
+  font-weight: 600;
+  color: black;
+}
+
+h5#dog-day-title {
+  font-size: 170%;
 }
 
 a {
@@ -172,6 +178,11 @@ img.custom-carousel-img {
   background-color: white;
 }
 
+@media screen and (min-width: 540px) {
+  p.custom-text {
+    font-size: 150%;
+  }
+}
 blockquote {
   display: flex;
   justify-content: center;
