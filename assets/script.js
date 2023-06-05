@@ -304,7 +304,6 @@ function grabPetInfo() {
   PetPalPet.pet.name = $("#pet-name-input").val();
   // Not sure how this input type works yet
 
-<<<<<<< HEAD
   // PetPalPet.pet.type =
   if (/* Dry food checkbox is checked */ true) {
     PetPalPet.dryFood.meals = $("#meals-select").val();
@@ -314,14 +313,6 @@ function grabPetInfo() {
       .children("input")
       .eq(1)
       .val();
-=======
-  // PetPalPet.pet.type = 
-  if(/* Dry food checkbox is checked */ true){
-    PetPalPet.dryFood.meals = $('#meals-select').val();
-    PetPalPet.dryFood.cupsPerServing = $('#dry-food-meal-input').val();
-    PetPalPet.dryFood.bags = $('#dry-inventory').children('input').eq(0).val();
-    PetPalPet.dryFood.lbsPerBag = $('#dry-inventory').children('input').eq(1).val();
->>>>>>> main
   }
   if (/* Wet food checkbox is checked */ true) {
     PetPalPet.wetFood.meals = $("#meals-select").val();
