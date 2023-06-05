@@ -138,6 +138,10 @@ a:hover{
     font-weight: 400;
 }
 
+.carousel-item a:hover{
+    font-weight: 600;
+}
+
 #carousel-header{
     align-self: center;
     color: var(--deep-orange);
@@ -165,6 +169,9 @@ input{
     flex-shrink: 2;
 }
 
-
-
+img.custom-carousel-img{
+    object-fit: contain;
+    padding: 5px;
+    background-color: white;
+}
 
