@@ -24,4 +24,9 @@ THEN I can see a variety of grooming suggestions for my pet.
 WHEN I click on the resources tab at the bottom of the screen
 THEN I can find general information on a variety of dog breeds
 ```
+# Screenshots
+This is the page upon first loading.
+![](./assets/Images/READMEimages/pagefirstload.png)
 
+This is the page after inputting pet information.
+![](./assets/Images/READMEimages/pagewithcontent.png)
