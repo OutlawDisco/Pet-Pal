@@ -204,6 +204,7 @@ function servingPerBag(dryCup, bagAmount) {
   return (bagAmount * 4) / dryCup;
 }
 
+// Object to store and manipulate information about the pet
 var PetPalPet = {
   dayMade: 0,
   pet: {
@@ -216,8 +217,8 @@ var PetPalPet = {
     lbsPerServing: 0,
     bags: 0,
     lbsPerBag: 0,
-    daysLeft: function () {
-      if (this.meals == "") {
+    daysLeft: function () { // returns the amount of days that the user could feed their pet based on how much the pet eats per day
+      if(this.meals == ""){
         return null;
       }
       if (this.lbsPerServing == "") {
@@ -236,7 +237,7 @@ var PetPalPet = {
       servingsLeft -= daysSince2000(dayjs().format("DDMMYY")) - this.dayMade;
       return servingsLeft;
     },
-    initalizeValues: function (day) {
+    initalizeValues: function (day){ // to grab values from the modal
       this.dayMade = day;
       this.meals = $("#meals-select").val();
       this.lbsPerServing = $("#dry-food-meal-input").val();
@@ -244,7 +245,7 @@ var PetPalPet = {
       console.log($("#dry-inventory-bags").val());
       this.lbsPerBag = $("#dry-inventory-lbs").val();
     },
-    copyValues: function (copy) {
+    copyValues: function (copy){ // copy values from local storage
       this.dayMade = copy.dayMade;
       this.meals = copy.meals;
       this.lbsPerServing = copy.lbsPerServing;
@@ -258,8 +259,8 @@ var PetPalPet = {
     ozPerServing: 0,
     cans: 0,
     ozPerCan: 0,
-    daysLeft: function () {
-      if (this.meals == "") {
+    daysLeft: function () { // returns the amount of days that the user could feed their pet based on how much the pet eats per day
+      if(this.meals == ""){
         return null;
       }
       if (this.ozPerServing == "") {
@@ -277,14 +278,14 @@ var PetPalPet = {
       servingsLeft -= daysSince2000(dayjs().format("DDMMYY")) - this.dayMade;
       return servingsLeft;
     },
-    initalizeValues: function (day) {
+    initalizeValues: function (day){ // to grab values from modal
       this.dayMade = day;
       this.meals = $("#meals-select").val();
       this.ozPerServing = $("#wet-food-meal-input").val();
       this.cans = $("#wet-inventory-cans").val();
       this.ozPerCan = $("#wet-inventory-oz").val();
     },
-    copyValues: function (copy) {
+    copyValues: function (copy){ // copies values from local storage
       this.dayMade = copy.dayMade;
       this.meals = copy.meals;
       this.ozPerServing = copy.ozPerServing;
@@ -292,7 +293,7 @@ var PetPalPet = {
       this.ozPerCan = copy.ozPerCan;
     },
   },
-  grooming: {
+  grooming: { // unused
     skin: "",
     coat: "",
     length: "",
@@ -301,7 +302,7 @@ var PetPalPet = {
       // get values using jQuery
     },
   },
-  initalizeValues: function () {
+  initalizeValues: function () { // grab info from modal, calls initializeValues in other objects
     var currDay = daysSince2000(dayjs().format("DDMMYY"));
     this.dayMade = currDay;
     this.pet.name = $("#pet-name-input").val();
@@ -310,9 +311,9 @@ var PetPalPet = {
     this.grooming.initalizeValues();
     console.log(PetPalPet);
   },
-  pullValsFromLocal: function () {
-    var stored = JSON.parse(localStorage.getItem("pet"));
-    if (stored !== null) {
+  pullValsFromLocal: function (){ // pulls data from localStorage and copies it
+    var stored = JSON.parse(localStorage.getItem('pet'));
+    if(stored !== null){
       this.dayMade = stored.dayMade;
       this.pet.name = stored.pet.name;
       this.dryFood.copyValues(stored.dryFood);
@@ -361,7 +362,9 @@ function pushToLocal(name, toPush) {
   localStorage.setItem(name, JSON.stringify(toPush));
 }
 
-$("#pantry-submit").on("click", function (e) {
+// event handler for modal
+// hides the modal
+$('#pantry-submit').on('click', function(e){
   e.preventDefault();
   PetPalPet.initalizeValues();
   pushToLocal("pet", PetPalPet);
@@ -371,12 +374,11 @@ $("#pantry-submit").on("click", function (e) {
   updatePantryTab();
 });
 
-function updatePantryTab() {
-  if (PetPalPet.dryFood.daysLeft() !== null) {
-    $("#dry-food-remaining").text(
-      parseFloat(PetPalPet.dryFood.daysLeft()).toFixed(2)
-    );
-    $("#pantry-dry-text").removeClass("d-none");
+// shows amount of food the user has left
+function updatePantryTab (){
+  if(PetPalPet.dryFood.daysLeft() !== null){
+    $('#dry-food-remaining').text(parseFloat(PetPalPet.dryFood.daysLeft()).toFixed(2));
+    $('#pantry-dry-text').removeClass('d-none');
   }
   if (PetPalPet.wetFood.daysLeft() !== null) {
     $("#wet-food-remaining").text(
