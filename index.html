@@ -37,11 +37,11 @@
   </head>
   <body>
     <!-- start modal -->
-    <div id="profile-modal" class="modal-fullscreen-lg-down p-5">
-  <div class="modal-dialog">
+  <div id="profile-modal" class="modal-fullscreen-lg-down p-5">
+    <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title mb-3">Create Your Pet's Profile</h5>
+        <h5 class="modal-title mb-2">Create Your Pet's Profile</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
@@ -49,10 +49,8 @@
           <label for="pet-name-input" class="form-label">Pet Name:</label>
           <input type="text" class="form-control" id="pet-name-input" placeholder="Your pet's name here">
         </div>
-
         <section class="food">
           <h3 class="mt-5">FOOD:</h3>
-
           <select class="form-select mb-3" id="meals-select" aria-label="Default select example">
             <option selected>Select the number of meals per day</option>
             <option value="1">1</option>
@@ -64,17 +62,16 @@
           </select>
 
           <div id="dry-food-check" class="form-check mt-5">
-            <h6>Dry Food Information</h6>
-            <br>
+            <h6>Dry Food Information <span class="fw-light fs-6"> (leave blank if N/A) </span></h6>
           </div>
           <div id="pantry-dry-food">
-            <label for="dry-meal-portion" class="form-label mt-3">Specify the quantity of dry food per serving</label>
-            <div id="dry-food-meal" class="input-group input-group-sm mb-3">
+            <label for="dry-meal-portion" class="form-label mt-2">Specify the quantity of dry food per serving</label>
+            <div id="dry-food-meal" class="input-group input-group-sm mb-2">
               <input id="dry-food-meal-input" type="text" class="form-control" aria-label="dry-meal-portion">
               <span class="input-group-text">lbs.</span>
             </div>
-            <label for="dry-inventory" class="form-label mt-3">Specify your current inventory of dry food</label>
-            <div id="dry-inventory" class="input-group input-group-sm mb-3">
+            <label for="dry-inventory" class="form-label mt-2">Specify your current inventory of dry food</label>
+            <div id="dry-inventory" class="input-group input-group-sm mb-2">
               <input type="text" class="form-control" id="dry-inventory-bags" aria-label="dry-inventory-bags">
               <span class="input-group-text">bag(s)</span>
               <input type="text" class="form-control" id="dry-inventory-lbs" aria-label="dry-inventory-lbs">
@@ -83,50 +80,50 @@
           </div>
 
           <div id="wet-food-check" class="form-check mt-5">
-            <h6>Wet Food Information</h6>
-            <br>
+            <h6>Wet Food Information <span class="fw-light fs-6"> (leave blank if N/A) </span></h6>
+          </div>
             <div id="pantry-wet-food">
-              <label for="wet-meal-portion" class="form-label mt-3">Specify the quantity of wet food per serving</label>
-              <div id="wet-food-meal" class="input-group input-group-sm mb-3">
+              <label for="wet-meal-portion" class="form-label mt-2">Specify the quantity of wet food per serving</label>
+              <div id="wet-food-meal" class="input-group input-group-sm mb-2">
                 <input id="wet-food-meal-input" type="text" class="form-control" aria-label="wet-meal-portion">
                 <span class="input-group-text">oz.</span>
               </div>
-              <label for="wet-inventory" class="form-label mt-3">Specify your current inventory of wet food</label>
-              <div id="wet-inventory" class="input-group input-group-sm mb-3">
-                <label for="wet-inventory-cans">Number of Cans On Hand</label>
+              <label for="wet-inventory" class="form-label mt-2">Specify your current inventory of wet food</label>
+              <div id="wet-inventory" class="input-group input-group-sm mb-2">
                 <input type="text" class="form-control" id="wet-inventory-cans" aria-label="wet-inventory-cans">
-                <span class="input-group-text">cans</span>
-                <label for="wet-inventory-oz">Amount of wet food in a can (in oz.)</label>
+                <span class="input-group-text">can(s)</span>
                 <input type="text" class="form-control" id="wet-inventory-oz" aria-label="wet-inventory-oz">
                 <span class="input-group-text">oz. per can</span>
               </div>
             </div>
-          </div>
         </section>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button id="pantry-submit" type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-secondary mx-1 my-2" data-bs-dismiss="modal">Close</button>
+        <button id="pantry-submit" type="button" class="btn btn-primary mx-1 my-2">Save changes</button>
       </div>
     </div>
+    </div>
   </div>
-</div>
     <!-- end modal -->
+
     <div class="container-fluid p-5 custom-app-container vh-100">
+      
       <!-- start header -->
       <header> 
       <div class="row"> 
         <div class="col-12 d-flex flex-column align-items-center custom-pet-header ">
           <h1><span class="text-white">Pet</span>Pal</h1>
-            <img id="pet-img" class="rounded-circle border" src="https://www.bil-jac.com/Images/DogPlaceholder.svg" alt="Pet Image" />
+            <img id="pet-img" class="rounded-circle border" src="https://www.bil-jac.com/Images/DogPlaceholder.svg" alt="User Pet Image" />
               <h5 id="pet-name" class="text-center p-3">Pet Name</h5>
         </div>
       </header>
       <!-- end header -->
 
-      <!-- accordion for food, activity, grooming, and resources -->
-      <!-- Food Section -->
+      <!-- Bootstrap accordion with tabs for food, activity, grooming, and resources -->
       <div class="accordion" id="accordion-options">
+
+        <!-- Food Section -->
         <div class="accordion-item">
           <button
             class="accordion-button collapsed w-100 d-flex position-relative custom-tab"
@@ -145,22 +142,20 @@
             aria-labelledby="headingOne"
             data-bs-parent="#accordion-options"
           >
+            <!-- Pantry section to track pet food supply - span tags are dynamically changed to reflect user input and time elapsed since most recent entery of food inventory -->
             <div class="accordion-body custom-tab-body">
               <div class="custom-pantry-box w-100 d-flex flex-column rounded p-2">
                 <h5> Pantry </h5>
                 <p class="pt-2 d-none" id="pantry-dry-text"> You have <span id="dry-food-remaining" class="fw-bold text-success"> N/A </span> days of dry food remaining </p>
                 <p class="pt-2 d-none" id="pantry-wet-text"> You have <span id="wet-food-remaining" class="fw-bold text-danger"> N/A </span> days of wet food remaining </p>
-                <!-- <p class="pt-2"> You have <span class="fw-bold text-success"> 10 </span> treats remaining </p> -->
-
-              
               </div>
             </div>
           </div>
         </div>
-<!-- Activity Section -->
+
+        <!-- Activity Section -->
         <div class="accordion-item">
           <button
-
             class="accordion-button collapsed w-100 d-flex justify-content-end position-relative custom-tab"
             type="button"
             data-bs-toggle="collapse"
@@ -177,8 +172,8 @@
             class="accordion-collapse collapse"
             aria-labelledby="headingTwo"
             data-bs-parent="#accordion-options">
-
             <div class="accordion-body custom-tab-body">
+              <!-- Live weather app that with alert system to let user know whether it's a good time for a walk - user's latest location is stored in local storage and refreshed when reopening page -->
               <div id="activity-container" class="container-fluid p-2"> 
                 <div class="row d-flex justify-content-around">
                 <div class="card col-sm-12 col-md-5 mt-3 weather-card">
@@ -199,10 +194,9 @@
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                   </div>
                 </div>
-                
               </div>
               
-
+              <!-- carousel featuring active, indoor friendly products for pets -->
               <div id="carousel-container" class="col-sm-12 col-md-5 mt-3 p-2">   
               <div id="pet-product-carousel" class="carousel slide d-flex align-items-center p-2" data-ride="carousel">
                 <div class="carousel-inner">
@@ -241,8 +235,7 @@
                       <h5>PET ZONE Treat Dispenser Ball </h5>
                       <a href="https://www.chewy.com/pet-zone-iq-treat-dispenser-ball-dog/dp/142884?utm_source=google-product&utm_medium=cpc&utm_campaign=19996370614&utm_content=Pet%20Zone&utm_term=&gclid=CjwKCAjwpuajBhBpEiwA_ZtfhWq9sECXS4uYb-Kn6KTImyUzxCtBiAjvqKZ720PKYuwQp75PeCqQARoC9h4QAvD_BwE" target="_blank"> $9.95 at Chewy.com </a>
                     </div>
-                  </div>
-                  
+                  </div>  
                 </div>
                 <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
                   <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -259,7 +252,8 @@
             </div>
           </div>
         </div>
-<!-- Grooming section -->
+
+        <!-- Grooming section -->
         <div class="accordion-item">
           <button
             class="accordion-button collapsed w-100 d-flex justify-content-end position-relative custom-tab"
@@ -286,6 +280,7 @@
                     <p class="card-text custom-text"> Did you know: It's recommended to wash your dog every 4 to 6 weeks?  Unless you have an active pup who loves to get dirty, washing them more than once a month can dry out their skin and damage the coat.  Regular brushing works wonders for circulation and added shine! </p>
                   </div>
                 </div>
+                <!-- carousel featuring some of our favorite grooming products for pets -->
                 <div id="carousel-container" class="col-sm-12 col-md-5 mt-3 p-2">   
                   <div id="pet-product-carousel" class="carousel slide d-flex align-items-center p-2" data-ride="carousel">
                     <div class="carousel-inner">
@@ -356,7 +351,7 @@
             </div>
           </div>
         </div>
-<!-- Resources section -->
+        <!-- Resources section -->
         <div class="accordion-item">
           <button
             class="accordion-button collapsed w-100 d-flex justify-content-end position-relative custom-tab"
@@ -384,6 +379,7 @@
             <button class="btn btn-dark" type="submit">Search</button>
           </form>
         </div>
+        <!-- information dynamically displays, with information on how to adopt specific breed after running search -->
         <div class="col-sm-12 col-md-5 text-center">
           <div class="card">
             <div class="card-body">
@@ -405,11 +401,15 @@
         </div>
       </div>
       <!-- end accordion -->
-      <blockquote class="blockquote mb-0 p-3">
-          <p>"PetPal is super cool"</p>
-          <footer class="blockquote-footer">Lao Tsu <cite title="Source Title"></cite></footer>
-      </blockquote>
-    </div>
+
+      <footer class="row d-flex justify-content-center mt-5">
+        <div class="col-6 text-center">
+          <p class="fs-4 fst-italic fw-bolder mb-0"> "PetPal is super cool!" </p>
+          <p class="text-white-50 mt-0"> -Lao Tzu </p>
+        </div>
+      </footer>
+      
+  </div>
     
     
         
