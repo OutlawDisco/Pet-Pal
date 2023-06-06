@@ -28,3 +28,6 @@ This is the page upon first loading.
 
 This is the page after inputting pet information.
 ![](./assets/Images/READMEimages/pagewithcontent.png)
+
+Link to the live page
+https://outlawdisco.github.io/Pet-Pal/
